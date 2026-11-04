@@ -1,0 +1,17 @@
+{
+  "name": "Pre-Intermediate Çalışma Defteri",
+  "short_name": "Çalışma Defteri",
+  "description": "Speakout Pre-Intermediate ünitelerine göre kelime, dilbilgisi, dinleme, konuşma, yazma ve sınav çalışması.",
+  "lang": "tr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F3F5FA",
+  "theme_color": "#17203B",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

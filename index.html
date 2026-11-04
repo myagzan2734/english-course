@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" href="icon-192.png">
+<meta name="theme-color" content="#F3F5FA" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E1327" media="(prefers-color-scheme: dark)">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Çalışma Defteri">
+<title>Speakout Pre-Intermediate Çalışma Defteri</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F3F5FA;--card:#FFFFFF;--ink:#17203B;--muted:#56607E;--line:#D9DFEB;
+  --hl:#FFD84D;--hl-ink:#17203B;--teal:#0F7570;--teal-soft:#DFF1EF;--coral:#B4413A;--coral-soft:#FBE6E3;
+  --head:"Bricolage Grotesque",ui-rounded,"Segoe UI",system-ui,sans-serif;
+  --body:"Atkinson Hyperlegible","Segoe UI",system-ui,-apple-system,sans-serif;
+  color-scheme:light;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0E1327;--card:#161D38;--ink:#E7EAF4;--muted:#9AA3C1;--line:#2A3357;
+    --hl:#E8C33A;--hl-ink:#131830;--teal:#4CC2BA;--teal-soft:#14333A;--coral:#F0857A;--coral-soft:#3A1D23;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0E1327;--card:#161D38;--ink:#E7EAF4;--muted:#9AA3C1;--line:#2A3357;
+  --hl:#E8C33A;--hl-ink:#131830;--teal:#4CC2BA;--teal-soft:#14333A;--coral:#F0857A;--coral-soft:#3A1D23;
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px)}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-text-size-adjust:100%}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+h1,h2,h3{font-family:var(--head);line-height:1.15;margin:0 0 .4em;letter-spacing:-.01em}
+h1{font-size:clamp(1.9rem,6vw,2.8rem);font-weight:800}
+h2{font-size:1.45rem;font-weight:700;margin-top:1.6em}
+h3{font-size:1.15rem;font-weight:700}
+p{margin:0 0 .8em}
+a{color:var(--teal)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--teal);outline-offset:2px;border-radius:6px}
+.wrap{max-width:820px;margin:0 auto;padding:0 18px 64px}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+.bar .in{max-width:820px;margin:0 auto;display:flex;align-items:center;gap:10px;padding:10px 18px;min-height:54px}
+.bar .back{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:6px 12px;cursor:pointer;text-decoration:none;color:var(--ink);font-weight:700;font-size:.95rem}
+.bar .ttl{font-family:var(--head);font-weight:700;font-size:1.05rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mark{background:linear-gradient(transparent 58%,var(--hl) 58%,var(--hl) 92%,transparent 92%);color:inherit;padding:0 .08em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.lead{color:var(--muted);font-size:1.05rem;max-width:60ch}
+.hero{padding:28px 0 8px}
+.stats{display:flex;gap:22px;flex-wrap:wrap;margin:16px 0 4px}
+.stat b{display:block;font-family:var(--head);font-size:1.7rem;font-weight:800;line-height:1}
+.stat span{color:var(--muted);font-size:.9rem}
+.units{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+.tile{display:block;text-decoration:none;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 12px;position:relative;min-height:132px}
+.tile:hover{border-color:var(--teal)}
+.tile .num{font-family:var(--head);font-weight:800;font-size:2.6rem;line-height:.9;color:var(--ink)}
+.tile .nm{font-family:var(--head);font-weight:700;font-size:1.1rem;margin-top:6px}
+.tile .tr{color:var(--muted);font-size:.88rem}
+.prog{height:6px;background:var(--line);border-radius:3px;margin-top:10px;overflow:hidden}
+.prog i{display:block;height:100%;background:var(--teal);border-radius:3px}
+.badge{position:absolute;top:12px;right:12px;font-size:.78rem;font-weight:700;background:var(--hl);color:var(--hl-ink);border-radius:6px;padding:2px 7px}
+.exams{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.exam-t{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.exam-t .tr{color:var(--paper);opacity:.75}
+.exam-t .nm{font-size:1.25rem;margin-top:0}
+.exam-t .badge{background:var(--hl)}
+.btnrow{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
+.btn{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:9px 16px;cursor:pointer;font-weight:700;text-decoration:none;color:var(--ink);display:inline-flex;align-items:center;gap:6px}
+.btn.pri{background:var(--teal);border-color:var(--teal);color:#fff}
+.btn:disabled{opacity:.5;cursor:default}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding:4px 0 10px;margin:8px -18px 6px;padding-left:18px;padding-right:18px;scrollbar-width:none;position:sticky;top:calc(env(safe-area-inset-top,0px) + 55px);background:var(--paper);z-index:4;border-bottom:1px solid var(--line)}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:7px 14px;cursor:pointer;font-weight:700;font-size:.93rem}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.uhead{display:flex;align-items:flex-end;gap:14px;padding:22px 0 4px}
+.uhead .big{font-family:var(--head);font-weight:800;font-size:4.2rem;line-height:.8}
+.uhead h1{margin:0}
+.uhead .tr{color:var(--muted)}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:12px 0}
+.panel h3{margin-top:0}
+.lesson{display:grid;grid-template-columns:48px 1fr;gap:4px 12px;padding:10px 0;border-top:1px solid var(--line)}
+.lesson:first-of-type{border-top:0}
+.lesson .c{font-family:var(--head);font-weight:800;color:var(--teal)}
+.lesson .m{color:var(--muted);font-size:.93rem}
+.wlist{list-style:none;padding:0;margin:0}
+.w{display:grid;grid-template-columns:1fr auto;gap:2px 10px;padding:12px 0;border-top:1px solid var(--line)}
+.w:first-child{border-top:0}
+.w .en{font-weight:700;font-size:1.05rem}
+.w .trn{color:var(--muted)}
+.w .ex{font-style:italic;grid-column:1/-1;font-size:.95rem}
+.w.done .en{background:linear-gradient(transparent 58%,var(--hl) 58%,var(--hl) 92%,transparent 92%)}
+.icon{border:1px solid var(--line);background:var(--card);border-radius:8px;width:38px;height:38px;display:inline-grid;place-items:center;cursor:pointer;font-size:1rem}
+.wbtns{display:flex;gap:6px;align-items:start}
+.chk[aria-pressed="true"]{background:var(--teal);border-color:var(--teal);color:#fff}
+.flash{background:var(--card);border:2px solid var(--ink);border-radius:18px;min-height:220px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;cursor:pointer;user-select:none}
+.flash .fe{font-family:var(--head);font-weight:800;font-size:2rem}
+.flash .ft{font-size:1.25rem;margin-top:8px}
+.flash .fx{font-style:italic;color:var(--muted);margin-top:8px}
+.flash .hint{color:var(--muted);font-size:.85rem;margin-top:14px}
+.formula{font-family:var(--head);font-weight:700;background:var(--teal-soft);border-radius:8px;padding:8px 12px;display:inline-block;margin:4px 0 10px}
+.exs{list-style:none;padding:0;margin:0}
+.exs li{display:flex;gap:8px;align-items:center;padding:6px 0;border-top:1px dashed var(--line)}
+.exs li:first-child{border-top:0}
+.exs .icon{width:32px;height:32px;flex:0 0 auto;font-size:.85rem}
+.q{border:0;padding:12px 0;margin:0;border-top:1px solid var(--line)}
+.q:first-of-type{border-top:0}
+.q legend{font-weight:700;padding:0;margin-bottom:8px;display:flex;gap:8px}
+.qn{font-family:var(--head);color:var(--teal);min-width:1.4em}
+.blank{display:inline-block;min-width:3.2em;border-bottom:2px solid var(--ink);margin:0 2px}
+.opt{display:flex;gap:10px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:9px 12px;margin:6px 0;cursor:pointer;background:var(--card)}
+.opt input{accent-color:var(--teal);width:18px;height:18px;margin:0}
+.opt.ok{background:var(--teal-soft);border-color:var(--teal)}
+.opt.ok::after{content:"✓";margin-left:auto;color:var(--teal);font-weight:800}
+.opt.bad{background:var(--coral-soft);border-color:var(--coral)}
+.opt.bad::after{content:"✗";margin-left:auto;color:var(--coral);font-weight:800}
+.result{font-family:var(--head);font-weight:800;font-size:1.5rem;margin:10px 0}
+.player{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.speed{display:flex;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.speed button{border:0;background:var(--card);padding:8px 12px;cursor:pointer;font-weight:700}
+.speed button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.script{white-space:pre-line;background:var(--paper);border-radius:10px;padding:12px 14px;margin-top:12px;border:1px solid var(--line)}
+textarea{width:100%;min-height:180px;font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px}
+.wc{color:var(--muted);font-size:.9rem;margin-top:4px}
+.model{background:var(--paper);border-left:4px solid var(--hl);border-radius:6px;padding:12px 14px;margin-top:10px;white-space:pre-line}
+.tips{margin:0;padding-left:1.2em}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:6px 12px;cursor:pointer;font-size:.95rem}
+.timer{font-family:var(--head);font-weight:800;font-size:2.2rem}
+.prompt{padding:10px 0;border-top:1px solid var(--line);display:flex;gap:10px}
+.prompt:first-child{border-top:0}
+.prompt .qn{flex:0 0 auto}
+.contents-u{margin-top:22px}
+.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 18px);transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:10px;font-size:.95rem;z-index:20;max-width:90vw}
+.examtop{position:sticky;top:calc(env(safe-area-inset-top,0px) + 55px);background:var(--paper);z-index:4;padding:8px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:10px}
+.note{color:var(--muted);font-size:.88rem;margin-top:30px;border-top:1px solid var(--line);padding-top:14px}
+.bar .sp{flex:1}
+.hbtn{border:1px solid var(--line);background:var(--card);border-radius:10px;width:40px;height:38px;display:inline-grid;place-items:center;text-decoration:none;font-size:1.15rem;flex:0 0 auto}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.avc{font-size:1.5rem;padding:4px 10px}
+.btn.danger{color:var(--coral);border-color:var(--coral)}
+.phead{display:flex;gap:16px;align-items:center}
+.bigav{font-size:3.6rem;line-height:1;width:76px;height:76px;display:grid;place-items:center;background:var(--card);border:2px solid var(--ink);border-radius:50%;flex:0 0 auto}
+.kpis{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-top:14px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px}
+.kpi b{font-family:var(--head);font-size:1.8rem;font-weight:800;display:block;line-height:1.1}
+.kpi span{color:var(--muted);font-size:.88rem}
+.kpi.hot{background:var(--hl);color:var(--hl-ink);border-color:var(--hl)}
+.kpi.hot span{color:var(--hl-ink);opacity:.85}
+.urow{display:grid;grid-template-columns:2.2em 1fr 3.4em;gap:2px 10px;align-items:center;padding:10px 0;border-top:1px solid var(--line);text-decoration:none;color:var(--ink)}
+.urow:first-of-type{border-top:0}
+.urow .n{font-family:var(--head);font-weight:800;font-size:1.3rem}
+.urow .meta{color:var(--muted);font-size:.84rem}
+.urow .prog{margin-top:6px}
+.pct{font-family:var(--head);font-weight:800;text-align:right}
+.act{display:flex;gap:10px;padding:9px 0;border-top:1px solid var(--line);align-items:baseline}
+.act:first-of-type{border-top:0}
+.act .when{color:var(--muted);font-size:.85rem;margin-left:auto;white-space:nowrap}
+.inp{font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:10px 12px;width:100%;max-width:340px}
+.m{color:var(--muted);font-size:.9rem}
+.fl{display:block;font-weight:700;margin:10px 0 4px}
+.mine{font-size:.72rem;font-weight:700;background:var(--teal-soft);color:var(--teal);border-radius:5px;padding:1px 6px;vertical-align:middle}
+.next{border:2px solid var(--ink)}
+.chart{width:100%;height:auto;display:block}
+.chart .b{fill:var(--teal)}.chart .t{fill:var(--hl)}.chart .z{fill:var(--line)}
+.chart text{fill:var(--muted);font-size:10px;font-family:var(--body)}
+details summary{cursor:pointer;font-weight:700;color:var(--teal)}
+@media (prefers-reduced-motion:no-preference){.flash{transition:transform .15s}.flash:active{transform:scale(.98)}}
+</style>
+</head>
+<body>
+<header class="bar"><div class="in" id="bar"></div></header>
+<main class="wrap" id="app"></main>
+<script>
+/* ===================== DATA ===================== */
+const U=[
+{n:1,t:"Life",tr:"Yaşam",
+lessons:[["1.1","Feeling good?","Question forms","Free time"],["1.2","True love","Past simple","Relationships"],["1.3","Nice day, isn’t it?","Making conversation","Conversation topics"],["1.4","Miranda","BBC video dersi","Önemli insanlar, en iyi arkadaş"]],
+sum:"İlk ünite kişisel hayat, mutluluk, boş zaman ve ilişkiler üzerine. Soru kurmayı (yardımcı fiil + özne), geçmiş zamanı (past simple) ve -ed sonlarının telaffuzunu çalışırsın. 1.3’te tanımadığın biriyle sohbet başlatma kalıplarını öğrenir, ünite sonunda en iyi arkadaşını ve hayatındaki önemli bir yılı yazarsın.",
+words:[["hang out (with)","takılmak, vakit geçirmek","I usually hang out with my friends at the weekend."],["get on well with","biriyle iyi anlaşmak","I get on well with my sister."],["fall in love (with)","âşık olmak","They fell in love on holiday in Spain."],["go out with","biriyle çıkmak","He went out with Maria for two years."],["get married","evlenmek","My parents got married in 1998."],["split up","ayrılmak (çift)","They split up after a big argument."],["propose","evlenme teklif etmek","He proposed to her on top of a mountain."],["meet up (with)","buluşmak","Let’s meet up for coffee after class."],["chat online","internette sohbet etmek","I chat online with my cousin in Germany."],["relax","dinlenmek, rahatlamak","I relax by listening to music."],["colleague","iş arkadaşı","My colleagues are very friendly."],["anniversary","yıl dönümü","Today is our tenth wedding anniversary."],["happiness","mutluluk","Money doesn’t always bring happiness."],["free time","boş zaman","What do you do in your free time?"]],
+gram:[{t:"Question forms (Soru yapıları)",e:"Soru sorarken yardımcı fiil (do/does/did, have, can…) özneden önce gelir. ‘be’ fiilinde be öznenin önüne geçer. Soru kelimesi (Where, What, How often…) en başta durur.",f:"(Wh-) + yardımcı fiil + özne + fiil?",ex:["Where do you live?","What did you do last weekend?","Are you happy at work?","How often does she go to the gym?"]},
+{t:"Past simple (Geçmiş zaman)",e:"Geçmişte başlayıp bitmiş eylemler için. Düzenli fiillere -ed eklenir (worked), düzensiz fiillerin 2. hâli kullanılır (went, saw). Olumsuz ve soruda ‘did’ gelir, fiil yalın hâline döner. Telaffuz: worked /t/, played /d/, wanted /ɪd/.",f:"I worked. / I didn’t work. / Did you work?",ex:["We met at university in 2015.","She didn’t call me yesterday.","Did they get married last year?","I went to Paris and saw the Eiffel Tower."]}],
+phr:{t:"Making conversation (Sohbet başlatma)",items:["Nice day, isn’t it?","Where are you from?","What do you do?","How was your weekend?","Really? That sounds great!","Have you got any plans for the summer?","It was nice talking to you."]},
+lis:{t:"How Tom and Anna met",text:"Tom and Anna met twelve years ago at a friend’s party. Tom was very shy and didn’t say much, but Anna thought he was funny. A week later they met up for coffee and talked for four hours. They went out together for three years. Then Tom decided to propose. He took Anna to the beach where they had their first holiday and asked her to marry him. She said yes immediately! They got married the next summer, and now they have two children and a dog called Biscuit.",
+q:[["Where did Tom and Anna meet?",["At a friend’s party","On a beach","At university"],0],["How long did they go out before Tom proposed?",["Three years","One year","Twelve years"],0],["What is the dog’s name?",["Biscuit","Cookie","Toby"],0]]},
+spk:{p:["What makes you happy? Give three examples.","Tell your partner how you met your best friend.","What did you do last weekend? Ask your partner three questions too.","Who is the most important person in your life? Why?"],m:"I think small things make me happy. For example, I love having breakfast with my family on Sunday mornings. I also feel happy when I hang out with my friends by the sea. And finally, I love finishing a good book. What about you? What makes you happy?"},
+wri:{task:"Hayatındaki önemli bir yılı anlat (100–120 kelime). Bağlaçları kullan: because, so, but, although, then, after that.",tips:["Yılı ve neden önemli olduğunu ilk cümlede söyle.","Olayları sırayla anlat (In January… Then… In December…).","Past simple kullan; düzensiz fiillere dikkat et."],m:"2019 was a very important year for me. In January, I started university in Ankara, so I moved away from my family for the first time. At first I felt lonely because I didn’t know anyone. However, after a few weeks I met two great friends, and we started to hang out every evening. In the summer, I got my first part-time job in a café. It was hard work, but I learned a lot and saved some money. Then, in December, I travelled abroad for the first time. Although it was only a short trip, it changed the way I see the world."},
+quiz:[["___ do you live? — In Izmir.",["Where","What","Who"],0],["___ you go out last night?",["Did","Do","Were"],0],["She ___ to London in 2020.",["moved","moves","move"],0],["I ___ well with my brother. We never argue.",["get on","get up","go out"],0],["They ___ up after five years together.",["split","broke in","went"],0],["Nice day, ___ it?",["isn’t","is","doesn’t"],0]]},
+
+{n:2,t:"Work",tr:"İş",
+lessons:[["2.1","The company 4U?","Present simple and continuous","Work"],["2.2","A risky business","Adverbs of frequency","Jobs"],["2.3","I like working outside","Expressing likes/dislikes","Types of work"],["2.4","Dream Commuters","BBC video dersi","İş-yaşam dengesi"]],
+sum:"İş dünyası, meslekler ve iş-yaşam dengesi. Geniş zaman ile şimdiki zamanın farkını, sıklık zarflarını (always, usually…) ve sevdiğin/sevmediğin şeyleri anlatma kalıplarını öğrenirsin. Tehlikeli meslekler hakkında konuşur, iş deneyimini anlatan bir e-posta yazarsın.",
+words:[["employee","çalışan","The company has 200 employees."],["boss","patron, amir","My boss is very understanding."],["salary","maaş","She earns a good salary."],["full-time / part-time","tam zamanlı / yarı zamanlı","I have a part-time job at weekends."],["commute","işe gidip gelmek","I commute to work by train every day."],["deadline","son teslim tarihi","We have a deadline on Friday."],["apply for","başvurmak","He applied for a job in a bank."],["overtime","fazla mesai","I worked overtime last week."],["promotion","terfi","She got a promotion after two years."],["firefighter","itfaiyeci","Firefighters have a dangerous job."],["dangerous","tehlikeli","Fishing is one of the most dangerous jobs."],["work from home","evden çalışmak","I work from home on Mondays."],["work-life balance","iş-yaşam dengesi","A good work-life balance is important."],["motivate","motive etmek","Interesting projects motivate me."]],
+gram:[{t:"Present simple vs present continuous",e:"Present simple: rutinler, alışkanlıklar, genel gerçekler. Present continuous: şu an olan ya da geçici durumlar (this week, at the moment). ‘like, know, want, need’ gibi durum fiilleri genelde -ing almaz.",f:"I work… / I’m working at the moment…",ex:["I work in a bank.","At the moment I’m working on a new project.","She usually takes the bus, but this week she’s driving.","I know the answer."]},
+{t:"Adverbs of frequency (Sıklık zarfları)",e:"always (her zaman) › usually › often › sometimes › rarely › never. Ana fiilden önce, ‘be’ fiilinden sonra gelir.",f:"I often work late. / He is never late.",ex:["I often work late on Thursdays.","He is never late for meetings.","How often do you travel for work?","We rarely have long meetings."]}],
+phr:{t:"Likes and dislikes (Sevdiklerin)",items:["I really love working with people.","I’m keen on working outside.","I quite like my job.","I don’t mind working at weekends.","I’m not very keen on meetings.","I can’t stand sitting at a desk all day.","Me too! / Really? I don’t."]},
+lis:{t:"An interview with a nurse",text:"My name’s Elif and I’m a nurse in a big hospital in Izmir. I usually work long shifts, sometimes twelve hours. I often work at night, which is difficult, but I love helping people. At the moment I’m studying for a special course in emergency care, so this month I’m working part-time. The salary isn’t fantastic, but my colleagues are wonderful and every day is different. I can’t stand paperwork, though!",
+q:[["Where does Elif work?",["In a hospital in Izmir","In a school in Izmir","In a hotel in Ankara"],0],["Why is she working part-time this month?",["She’s studying for a course","She’s ill","She’s on holiday"],0],["What does she dislike?",["Paperwork","Night shifts","Her colleagues"],0]]},
+spk:{p:["What motivates you at work or at school?","Describe a dangerous job. Would you like to do it? Why/why not?","Do you prefer working inside or outside? Alone or in a team?","Describe your work-life balance. What would you like to change?"],m:"I’m a student, so my ‘work’ is studying. I usually study for about four hours a day. At the moment I’m preparing for my exams, so I’m studying more than normal. I don’t mind working alone, but I really love working in a team because it’s more fun. I can’t stand studying late at night – I’m always too tired!"},
+wri:{task:"Bir yaz işi ilanına başvuran bir e-posta yaz ve iş deneyimini anlat (100–120 kelime).",tips:["Selamlama: Dear Sir or Madam, / Dear Ms Brown,","Neden yazdığını söyle: I’m writing to apply for…","Deneyimini present simple / past simple ile anlat.","Kapanış: I look forward to hearing from you. / Best regards,"],m:"Dear Ms Brown,\n\nI’m writing to apply for the job of waiter at your summer café. I’m twenty years old and I’m studying tourism at university.\n\nLast summer I worked part-time in a hotel restaurant for three months. I served customers, took orders and sometimes helped in the kitchen. I really enjoyed working with people, and I don’t mind working long hours or at weekends. At the moment I’m also taking an English course, so I can speak to foreign visitors.\n\nI’m friendly, hard-working and always on time. I look forward to hearing from you.\n\nBest regards,\nCan Demir"},
+quiz:[["Right now, I ___ an email to my boss.",["am writing","write","writes"],0],["She ___ to work by bus every day.",["goes","is going","go"],0],["He is ___ late for work. He’s very punctual.",["never","ever","often"],0],["I can’t stand ___ in an office.",["working","work","to working"],0],["A person who travels to work every day ___.",["commutes","promotes","applies"],0],["The money you earn every month is your ___.",["salary","deadline","overtime"],0]]},
+
+{n:3,t:"Time out",tr:"Boş zaman",
+lessons:[["3.1","Free in NYC","Present continuous / be going to (future)","Time out"],["3.2","Relax!","Questions without auxiliaries","Places to visit"],["3.3","Can I take a message?","Making a phone call","Collocations"],["3.4","Rio de Janeiro","BBC video dersi","Mükemmel bir gün planı"]],
+sum:"Şehirde boş zaman, etkinlikler ve gelecek planları. Gelecekteki ayarlanmış planlar için present continuous, niyetler için be going to kullanırsın. Öznesi soru kelimesi olan soruları (Who called you?) ve telefonda konuşma kalıplarını öğrenirsin. Ünite bir davet e-postası yazarak biter.",
+words:[["exhibition","sergi","There’s a photography exhibition at the gallery."],["art gallery","sanat galerisi","We spent the afternoon at an art gallery."],["street market","sokak pazarı","I bought this bag at a street market."],["theme park","eğlence parkı","The kids loved the theme park."],["sightseeing","gezip görme","We did some sightseeing in the old town."],["book a table","masa ayırtmak","I booked a table for eight o’clock."],["take a break","mola vermek","Let’s take a break and get a coffee."],["chill out","kafa dinlemek","I just want to chill out this weekend."],["leave a message","mesaj bırakmak","Can I leave a message for Mr Brown?"],["call back","geri aramak","I’ll call you back in ten minutes."],["hang up","telefonu kapatmak","Don’t hang up! I need to tell you something."],["get through","(telefonla) ulaşabilmek","I called the bank but couldn’t get through."],["concert","konser","Are you going to the concert on Saturday?"],["nightlife","gece hayatı","The city has amazing nightlife."]],
+gram:[{t:"Future: present continuous & be going to",e:"Present continuous: zamanı/yeri belli, ayarlanmış planlar (randevu, bilet alınmış). Be going to: niyetler ve kararlar. Türkçedeki ‘-ecek’ için ikisi de kullanılabilir; fark plan ne kadar kesin olduğunda.",f:"I’m meeting… / I’m going to + fiil",ex:["I’m meeting Ali at seven tonight.","We’re going to visit Rome next summer.","Are you doing anything on Friday?","I’m not going to stay at home this weekend."]},
+{t:"Questions without auxiliaries (Özne soruları)",e:"Who / What / Which sorunun öznesiyse do/does/did kullanılmaz; fiil olumlu cümledeki gibi çekilir. Karşılaştır: Who called you? (arayan kim?) / Who did you call? (sen kimi aradın?)",f:"Who + fiil(-s/-ed)…?",ex:["Who called you?","What happened at the party?","Which band plays tonight?","Who did you meet at the party?"]}],
+phr:{t:"Making a phone call (Telefonda)",items:["Hello, can I speak to Mr Brown, please?","Speaking.","Who’s calling, please?","I’m afraid she’s not here at the moment.","Can I take a message?","Could you ask him to call me back?","I’ll call back later."]},
+lis:{t:"What’s on this weekend",text:"Welcome to What’s On. This weekend there’s lots to do in the city. On Saturday morning, the street market in the old town opens at nine – it’s the perfect place to buy cheap clothes and try local food. In the afternoon, a new exhibition of modern art is opening at the City Gallery, and entry is free. If you prefer music, the jazz band Blue Notes is playing at the Park Theatre on Saturday night. Tickets cost twenty pounds. And on Sunday? It’s going to be sunny, so why not chill out in Central Park?",
+q:[["What time does the market open?",["At nine","At ten","At eight"],0],["How much does the exhibition cost?",["It’s free","£20","£10"],0],["What’s the weather going to be like on Sunday?",["Sunny","Rainy","Cold"],0]]},
+spk:{p:["What are you doing this weekend? Tell your partner your arrangements.","What are you going to do next summer?","How do people spend their free time in your country?","Plan a perfect day out in your city. Where are you going to go?"],m:"This weekend I’m quite busy. On Saturday morning I’m playing football with my friends, and in the evening I’m having dinner with my cousins. On Sunday I’m not going to do much – I’m going to chill out at home and maybe watch a film. Next summer I’m going to visit Antalya with my family."},
+wri:{task:"Bir arkadaşını bir etkinliğe davet eden e-posta yaz (80–100 kelime): ne, nerede, ne zaman, neden gelmeli?",tips:["Samimi selam: Hi Sara,","Soru ile başla: Are you free on…?","Planı present continuous ile anlat.","Cevap iste: Let me know by…"],m:"Hi Sara,\n\nAre you free on Saturday evening? I’m going to the Blue Notes concert at the Park Theatre and I’ve got an extra ticket. It starts at 8 p.m.\n\nWe could have dinner before the concert – I know a great Italian restaurant near the theatre. I’m booking a table for 6.30, so we have lots of time.\n\nLet me know by Thursday if you can come!\n\nSee you soon,\nDeniz"},
+quiz:[["We ___ dinner with my parents tonight. It’s all arranged.",["are having","have","had"],0],["Who ___ the window? — Tom did.",["broke","did break","did broke"],0],["Who ___ you meet at the party?",["did","does","was"],0],["Can I ___ a message?",["take","do","make"],0],["I couldn’t ___ through. The line was busy.",["get","go","put"],0],["Next year I ___ learn to drive.",["’m going to","going","will to"],0]]},
+
+{n:4,t:"Great minds",tr:"Parlak zihinler",
+lessons:[["4.1","Hidden talent","Present perfect + ever/never","Make and do"],["4.2","Schools of thought","Can, have to, must","Education"],["4.3","What should I do?","Giving advice","Language learning"],["4.4","Inventions","BBC video dersi","İcatlar"]],
+sum:"Yetenekler, eğitim ve öğrenme. Deneyimleri anlatmak için present perfect (Have you ever…?), kurallar ve zorunluluklar için can / have to / must, tavsiye vermek için should ve If I were you kalıplarını çalışırsın. make ve do ile kurulan kalıpları ayırt etmek bu ünitenin kelime odağıdır.",
+words:[["make a mistake","hata yapmak","Don’t worry if you make a mistake."],["make progress","ilerleme kaydetmek","You’re making good progress in English."],["make a decision","karar vermek","I need to make a decision about my future."],["do homework","ödev yapmak","I do my homework after dinner."],["do research","araştırma yapmak","Scientists do research in labs."],["do your best","elinden geleni yapmak","Just do your best in the exam."],["talent","yetenek","She has a talent for music."],["invention","icat","The wheel is a very old invention."],["pass / fail an exam","sınavı geçmek / kalmak","I passed my driving test the first time."],["revise","(sınava) tekrar çalışmak","I’m revising for my exams."],["strict","katı, sert","My teacher was very strict."],["uniform","üniforma","We had to wear a uniform at school."],["degree","üniversite diploması","She has a degree in engineering."],["memorise","ezberlemek","I memorise ten new words every day."]],
+gram:[{t:"Present perfect + ever / never",e:"Hayatın boyunca yaşadığın (ya da yaşamadığın) deneyimler, zaman belirtmeden. have/has + fiilin 3. hâli (V3). Zaman ya da detay verirsen past simple’a geçersin.",f:"Have you ever + V3? / I’ve never + V3",ex:["Have you ever won a prize?","I’ve never been to Japan.","She has written two books.","Yes, I have. I met a footballer in 2019."]},
+{t:"Can, have to, must",e:"can: mümkün/izinli · can’t: izin yok · have to: gerekli (çoğu zaman dışarıdan gelen kural) · don’t have to: gerekli değil · must: güçlü zorunluluk · mustn’t: yasak. Dikkat: don’t have to ≠ mustn’t!",f:"You have to… / You don’t have to… / You mustn’t…",ex:["You have to wear a uniform.","We don’t have to go to school on Saturdays.","You mustn’t use your phone in the exam.","Can we leave early today?"]}],
+phr:{t:"Giving advice (Tavsiye)",items:["You should listen to podcasts.","You shouldn’t translate every word.","Why don’t you keep a vocabulary notebook?","If I were you, I’d find a speaking partner.","Try reading simple books.","It’s a good idea to revise every week."]},
+lis:{t:"Tips for language learners",text:"Hi, I’m Mark and I teach English online. Students often ask me how to learn faster. My first tip: you should listen to English every day, even for ten minutes. Podcasts are great for this. Second, why don’t you keep a vocabulary notebook? Write the new word, a translation and an example sentence. Third, don’t be afraid of making mistakes – everyone makes them. And finally, if I were you, I’d find a speaking partner. Practise together once a week and you’ll make fast progress.",
+q:[["How long should you listen to English every day?",["At least ten minutes","An hour","Two hours"],0],["What should you write in the notebook?",["The word, a translation and an example","The word and a picture","Only the translation"],0],["How often should you meet a speaking partner?",["Once a week","Every day","Once a month"],0]]},
+spk:{p:["Have you got a hidden talent? Have you ever won anything?","What did you have to do at school? What couldn’t you do?","Give advice to a friend who wants to learn English quickly.","What is the most important invention in your opinion? Why?"],m:"I think my hidden talent is cooking. I’ve never studied it, but I’ve cooked for twenty people at a family party! At school we had to wear a uniform and we couldn’t use our phones in class. My advice for learning English: you should watch series with English subtitles, and if I were you, I’d learn ten words every day."},
+wri:{task:"Bir forumda ‘Dünyayı değiştiren en önemli icat’ başlığına gönderi yaz (100–120 kelime). Sonunda yazını kontrol et: yazım, zaman, kelime sırası.",tips:["Görüşünü ilk cümlede söyle.","İki-üç neden ver (First, … Also, … Finally, …).","Present perfect kullan: It has changed…","Kontrol listesi: büyük harf, -s takısı, düzensiz fiiller."],m:"In my opinion, the most important invention is the smartphone. It has changed the way we live in just a few years.\n\nFirst, it helps us keep in touch with people all over the world. I can talk to my cousin in Canada every week for free. Also, we can learn almost anything with it – I’ve learned a lot of English from apps and videos. Finally, it’s a camera, a map and a bank in your pocket.\n\nOf course, there are problems too. Some people can’t stop looking at their phones. But I still think it’s the invention that has made the biggest difference."},
+quiz:[["Have you ever ___ to Italy?",["been","went","go"],0],["I ___ never eaten sushi.",["have","has","did"],0],["You ___ smoke in the hospital. It’s forbidden.",["mustn’t","don’t have to","can"],0],["It’s Sunday, so I ___ get up early.",["don’t have to","mustn’t","can’t to"],0],["I always ___ my homework before dinner.",["do","make","take"],0],["If I ___ you, I’d study every day.",["were","am","be"],0]]},
+
+{n:5,t:"Travel",tr:"Seyahat",
+lessons:[["5.1","Fantastic film trips","Past simple and past continuous","Transport"],["5.2","Travel tips","Verb patterns","Travel items"],["5.3","You can’t miss it","Asking for/giving directions","Tourism"],["5.4","Full Circle","BBC video dersi","Bir ödül için fikir sunma"]],
+sum:"Yolculuklar, ulaşım ve turizm. Bir hikâye anlatırken arka planı past continuous, araya giren olayı past simple ile anlatırsın. Fiil kalıplarını (want to / enjoy -ing) ve yol tarifi sorma-verme kalıplarını öğrenirsin. Ünitede bir anı anlatır, bir gezini e-postayla yazarsın.",
+words:[["journey","yolculuk","The journey took six hours."],["platform","peron","The train leaves from platform 4."],["ferry","feribot","We took the ferry to the island."],["passport","pasaport","Don’t forget your passport!"],["suitcase","bavul","My suitcase is too heavy."],["sun cream","güneş kremi","Put on some sun cream – it’s hot."],["guidebook","rehber kitap","The guidebook recommends this restaurant."],["delay","rötar, gecikme","There’s a two-hour delay on our flight."],["souvenir","hediyelik eşya","I bought a souvenir for my mum."],["go straight on","dümdüz gitmek","Go straight on for 200 metres."],["turn left / right","sola / sağa dönmek","Turn left at the traffic lights."],["opposite","karşısında","The bank is opposite the post office."],["landmark","simge yapı","The Galata Tower is a famous landmark."],["get lost","kaybolmak","We got lost in the old town."]],
+gram:[{t:"Past simple & past continuous",e:"Past continuous (was/were + -ing): geçmişte devam eden, arka plandaki uzun eylem. Past simple: onu bölen kısa eylem. ‘while’ genelde uzun eylemle, ‘when’ kısa eylemle kullanılır.",f:"I was walking when it started to rain.",ex:["I was walking to the station when it started to rain.","While we were waiting, a man asked for directions.","What were you doing at 8 p.m. last night?","The sun was shining and people were swimming."]},
+{t:"Verb patterns (Fiil kalıpları)",e:"Bazı fiillerden sonra to + fiil gelir: want, decide, hope, plan, need, would like. Bazılarından sonra -ing gelir: enjoy, love, hate, finish, avoid, don’t mind.",f:"want to go / enjoy going",ex:["I want to visit Peru one day.","We enjoy travelling by train.","She decided to take a taxi.","I don’t mind sitting at the back."]}],
+phr:{t:"Directions (Yol tarifi)",items:["Excuse me, how do I get to the museum?","Is it far from here?","Go straight on and take the second right.","It’s on your left.","It’s next to the bank, opposite the park.","You can’t miss it."]},
+lis:{t:"The lost passport",text:"Last summer my friend and I were travelling around Greece by ferry. One evening we were sitting in a café on a small island when I realised that my passport wasn’t in my bag! We ran back to the port. It was getting dark and the last ferry was leaving. Suddenly, a woman came towards us. She was holding my passport! I left it on the ticket desk. We said thank you about a hundred times and caught the ferry just in time.",
+q:[["How were they travelling around Greece?",["By ferry","By train","By plane"],0],["Where did the speaker leave the passport?",["On the ticket desk","In the café","In the hotel"],0],["Did they catch the last ferry?",["Yes, just in time","No, they missed it","They took the next day’s ferry"],0]]},
+spk:{p:["Tell an anecdote about a journey that went wrong. What were you doing when…?","What do you always take with you when you travel?","Give directions from your home to the nearest café.","Describe your dream trip. Where do you want to go?"],m:"Two years ago I was travelling to Bursa by bus. We were driving through the mountains when it started to snow. The bus stopped and we waited for three hours! Everyone was cold, but a family shared their tea with us. In the end, we arrived at midnight. I still enjoy travelling by bus, but now I always take a warm jacket."},
+wri:{task:"Bir arkadaşına geçen hafta sonu yaptığın kısa bir geziyi anlatan e-posta yaz (100–120 kelime).",tips:["Nereye, kiminle, nasıl gittin?","Past simple + past continuous karışık kullan.","Bir sorun ya da ilginç bir an ekle.","Sonda arkadaşına soru sor."],m:"Hi Maya,\n\nI had a great weekend! On Saturday my sister and I took the ferry to one of the islands near Istanbul. The journey only took ninety minutes. While we were sitting on the deck, we saw some dolphins!\n\nOn the island there are no cars, so we hired bikes and cycled around. In the afternoon we got lost, but a kind old man gave us directions. We had fish for dinner in a small restaurant by the sea, and I bought a souvenir for Mum.\n\nWe came back on Sunday evening, tired but happy. What did you do at the weekend?\n\nLove,\nZeynep"},
+quiz:[["I ___ TV when the phone rang.",["was watching","watched","am watching"],0],["While they ___ dinner, the lights went out.",["were having","had","have"],0],["I enjoy ___ new places.",["visiting","to visit","visit"],0],["We decided ___ the train.",["to take","taking","take"],0],["Our flight has a three-hour ___.",["delay","platform","souvenir"],0],["The museum is ___ the park, on the other side of the road.",["opposite","between","straight"],0]]},
+
+{n:6,t:"Fitness",tr:"Sağlık ve form",
+lessons:[["6.1","Keeping fit","Present perfect + for/since","Health"],["6.2","The future of food","May, might, will","Food"],["6.3","How are you feeling?","Seeing the doctor","Illness"],["6.4","Monitor Me","BBC video dersi","Sağlıklı alışkanlıklar"]],
+sum:"Sağlıklı yaşam, beslenme ve hastalıklar. Bir şeyin ne kadar süredir devam ettiğini for/since ile anlatırsın. Geleceğe dair tahminlerde will (emin), may/might (belki) farkını öğrenirsin. Doktora derdini anlatma kalıplarıyla rol oyunu yapar, sağlık tavsiyeleri içeren bir blog yazısı yazarsın.",
+words:[["work out","spor yapmak","I work out at the gym three times a week."],["keep fit","formda kalmak","Swimming is a good way to keep fit."],["healthy / unhealthy","sağlıklı / sağlıksız","I try to eat healthy food."],["junk food","abur cubur","I’ve stopped eating junk food."],["diet","beslenme düzeni, diyet","A balanced diet is important."],["vegetarian","vejetaryen","My sister is a vegetarian."],["ingredient","malzeme (yemek)","What are the ingredients of this soup?"],["headache","baş ağrısı","I’ve got a terrible headache."],["sore throat","boğaz ağrısı","I can’t talk much – I’ve got a sore throat."],["temperature","ateş","You’ve got a high temperature."],["cough","öksürük / öksürmek","I’ve had this cough for a week."],["prescription","reçete","The doctor gave me a prescription."],["painkiller","ağrı kesici","Take a painkiller if it hurts."],["injury","yaralanma, sakatlık","He can’t play because of an injury."]],
+gram:[{t:"Present perfect + for / since",e:"Geçmişte başlayıp hâlâ devam eden durumlar. for + süre (for two years, for a week); since + başlangıç noktası (since 2020, since Monday). Türkçedeki ‘…dır / …den beri’.",f:"I’ve lived here for five years / since 2021.",ex:["I’ve lived here for five years.","She has been a vegetarian since 2018.","How long have you had this cough?","We’ve known each other since primary school."]},
+{t:"May, might, will (tahmin)",e:"will: emin olduğun tahmin · won’t: olmayacağından eminsin · may / might: olabilir, emin değilsin. Hepsinden sonra fiil yalın hâlde gelir.",f:"People will / might / won’t + fiil",ex:["In the future, people will eat more insects.","We might grow food in our flats.","I may not come to the gym tomorrow.","Robots won’t cook all our meals."]}],
+phr:{t:"At the doctor’s (Doktorda)",items:["What’s the matter?","I don’t feel very well.","I’ve got a sore throat and a cough.","It hurts here.","How long have you had it?","You need to rest and drink lots of water.","Take this twice a day."]},
+lis:{t:"At the doctor’s",text:"Doctor: Good morning. What’s the matter?\nPatient: I’ve got a sore throat and a bad cough.\nDoctor: How long have you had them?\nPatient: Since Monday. So, about four days.\nDoctor: Have you got a temperature?\nPatient: Yes, a little. Thirty-eight degrees last night.\nDoctor: OK. It’s probably a virus. You need to rest and drink lots of water. Take a painkiller if you need to. If you don’t feel better in a week, come back and see me.",
+q:[["When did the problem start?",["On Monday","On Thursday","Last week"],0],["What was the patient’s temperature?",["38 degrees","37 degrees","39 degrees"],0],["What should the patient do?",["Rest and drink lots of water","Take antibiotics","Go back to work"],0]]},
+spk:{p:["How do you keep fit? How long have you done it?","How long have you lived in your home? How long have you known your best friend?","What will people eat in 2050? Use will, may and might.","Role-play: You are at the doctor’s. Explain your problem."],m:"I go swimming twice a week. I’ve done it for about three years, since I started university. I’ve also stopped eating junk food since January. In 2050, I think people will eat less meat, and we might eat food from 3D printers. But I don’t think robots will cook for everyone."},
+wri:{task:"‘Sağlıklı kalmak için 5 öneri’ başlıklı bir blog yazısı yaz (100–120 kelime).",tips:["Kısa bir giriş yaz: neden önemli?","Öneriler için should / it’s a good idea to / try to kullan.","Kendi deneyimini ekle (I’ve… for/since).","Okuyucuya soru sorarak bitir."],m:"Five easy ways to stay healthy\n\nA lot of people think getting fit is difficult, but small changes can make a big difference. Here are my five tips.\n\n1. Walk more. I’ve walked to work every day since March, and I feel much better.\n2. Drink water, not fizzy drinks.\n3. Try to sleep for seven or eight hours.\n4. Eat more vegetables. You don’t have to be a vegetarian, but it’s a good idea to have vegetables with every meal.\n5. Find a sport you enjoy. If you love it, you won’t stop!\n\nWhat do you do to keep fit? Tell me in the comments."},
+quiz:[["I’ve lived in this city ___ 2015.",["since","for","from"],0],["She has worked here ___ six months.",["for","since","ago"],0],["It’s very cloudy. It ___ rain later.",["might","must","is"],0],["I’ve got a ___. My head really hurts.",["headache","sore throat","cough"],0],["The doctor gave me a ___ for some medicine.",["prescription","painkiller","diet"],0],["How long ___ you had this cough?",["have","did","are"],0]]},
+
+{n:7,t:"Changes",tr:"Değişimler",
+lessons:[["7.1","Living the dream","Used to","Verbs + prepositions"],["7.2","The great impostor","Purpose, cause and result","Collocations"],["7.3","Can you tell me?","Finding out information","Facilities"],["7.4","A Greek Adventure","BBC video dersi","Yeni deneyimler"]],
+sum:"Hayat değişiklikleri, yalanlar ve yeni deneyimler. Geçmişteki alışkanlıkları used to ile anlatırsın. Amaç (to), sebep (because) ve sonucu (so) bağlamayı, kibarca bilgi sormayı (Could you tell me…?) öğrenirsin. Paragraflar kullanarak hayatındaki bir değişimi yazarsın.",
+words:[["move abroad","yurt dışına taşınmak","They moved abroad to start a new life."],["give up","bırakmak (alışkanlık)","He gave up smoking last year."],["take up","(bir hobiye) başlamak","I’ve taken up yoga."],["settle down","yerleşik düzene geçmek","After years of travelling, she settled down in a village."],["change career","kariyer değiştirmek","At forty, he changed career and became a teacher."],["retire","emekli olmak","My grandfather retired at sixty-five."],["dream of","hayalini kurmak","I dream of living by the sea."],["worry about","…için endişelenmek","Don’t worry about the exam."],["depend on","…e bağlı olmak","It depends on the weather."],["tell a lie","yalan söylemek","He told a lie about his age."],["pretend","…mış gibi yapmak","She pretended to be a doctor."],["facilities","olanaklar, tesisler","The hotel has great facilities: a pool, a gym and a spa."],["opening hours","çalışma saatleri","What are the library’s opening hours?"],["fill in a form","form doldurmak","Please fill in this form."]],
+gram:[{t:"Used to",e:"Geçmişte düzenli olan ama artık olmayan alışkanlıklar ve durumlar (Türkçedeki ‘…ardı/…erdi’). Olumsuz ve soruda ‘use to’ yazılır (did zaten geçmişi gösterir).",f:"I used to + fiil / I didn’t use to / Did you use to…?",ex:["I used to live in a small town.","She didn’t use to like coffee.","Did you use to play football?","There used to be a cinema here."]},
+{t:"Purpose, cause, result",e:"to + fiil: amaç (…mek için) · because: sebep (çünkü) · so: sonuç (bu yüzden).",f:"…to + fiil / …because… / …so…",ex:["I went to the bank to get some money.","He lied because he was afraid.","It was raining, so we stayed at home.","She’s saving money to buy a car."]}],
+phr:{t:"Finding out information (Bilgi alma)",items:["Could you tell me what time the pool opens?","Do you know if there’s a café here?","Can I check that? Did you say ten o’clock?","Is there a discount for students?","Sorry, could you repeat that?","Dikkat: Could you tell me where the station is? (is sona gider)"]},
+lis:{t:"A new life by the sea",text:"Ten years ago, Lisa used to work in a bank in London. She earned good money, but she didn’t use to enjoy her job, and she worried about deadlines all the time. One day she decided to change her life. She sold her flat, moved abroad to Portugal and opened a small surf school. Now she lives near the beach and she has taken up painting. ‘I don’t earn as much,’ she says, ‘but I’m much happier. I used to dream of this life, and now it’s real.’",
+q:[["Where did Lisa use to work?",["In a bank in London","In a hospital in Lisbon","In a shop in Paris"],0],["What did she open in Portugal?",["A surf school","A café","A hotel"],0],["What new hobby has she taken up?",["Painting","Yoga","Cooking"],0]]},
+spk:{p:["How has your life changed in the last ten years? Use used to.","Why do people tell lies? Is it ever OK to lie?","Talk about a big change you would like to make in your life.","Role-play: Ask for information at a sports centre (opening hours, prices, facilities)."],m:"Ten years ago I used to live in a small village. I used to walk to school and play outside all day. I didn’t use to have a phone! Now I live in a big city and I take the metro everywhere. I’ve taken up running to stay fit, and I’d like to move abroad one day to study."},
+wri:{task:"Hayatındaki bir değişimi üç paragrafta anlat (120–140 kelime): önce, değişim, şimdi.",tips:["Paragraf 1: Eskiden nasıldı? (used to)","Paragraf 2: Ne oldu, neden? (because, so, to)","Paragraf 3: Şimdi nasıl, ne hissediyorsun?","Her paragraf tek bir fikir anlatır."],m:"When I was at high school, I used to be very shy. I didn’t use to speak in class, and I never went to parties because I was nervous around new people.\n\nEverything changed when I was seventeen. My English teacher asked me to join the school theatre group. I didn’t want to, but I agreed so I could get extra points. At first I was terrified, but slowly I started to enjoy it. I learned to speak loudly and to stop worrying about mistakes.\n\nNow I’m at university and I’m much more confident. I’ve made lots of friends, and last month I gave a presentation to two hundred students. I still get a little nervous, but I don’t let it stop me."},
+quiz:[["I ___ live in Ankara, but now I live in Izmir.",["used to","use to","was used to"],0],["Did you ___ have long hair?",["use to","used to","using to"],0],["I went to the shop ___ buy some milk.",["to","for","because"],0],["I was tired, ___ I went to bed early.",["so","because","to"],0],["Could you tell me what time ___?",["the museum opens","does the museum open","opens the museum"],0],["He ___ up smoking two years ago.",["gave","took","settled"],0]]},
+
+{n:8,t:"Money",tr:"Para",
+lessons:[["8.1","Treasure hunt","Relative clauses","Money"],["8.2","Pay me more!","Too much/many, enough, very","Multi-word verbs"],["8.3","I’m just looking","Buying things","Shopping"],["8.4","soleRebels","BBC video dersi","Bir iş fikri sunma"]],
+sum:"Para, alışveriş ve maaşlar. İnsanları, nesneleri ve yerleri tanımlamak için who / which / where ile relative clause kurarsın. too much / too many / enough / very farkını ve öbek fiilleri (pay back, try on) öğrenirsin. Mağazada alışveriş diyaloğu kurar, bir görüş yazısı yazarsın.",
+words:[["earn","kazanmak (para)","How much do nurses earn?"],["save","biriktirmek","I’m saving for a new laptop."],["spend","harcamak","I spend too much money on clothes."],["borrow","ödünç almak","Can I borrow ten lira?"],["lend","ödünç vermek","Could you lend me your car?"],["afford","(parası) yetmek","I can’t afford a holiday this year."],["cash","nakit","Do you want to pay in cash or by card?"],["receipt","fiş","Keep the receipt in case you want to return it."],["refund","para iadesi","I’d like a refund, please."],["bargain","kelepir","This jacket was a real bargain."],["discount","indirim","Students get a ten percent discount."],["invest","yatırım yapmak","They invested in a new company."],["pay back","geri ödemek","I’ll pay you back on Friday."],["try on","(kıyafet) denemek","Can I try on these shoes?"]],
+gram:[{t:"Relative clauses (who, which, where)",e:"Bir ismi tanımlamak için: who → insanlar, which (veya that) → nesneler/hayvanlar, where → yerler. Türkçede ‘…an/…en’ ya da ‘…dığı’ ile çevrilir.",f:"a person who… / a thing which… / a place where…",ex:["A cashier is a person who works in a shop.","This is the app which helps you save money.","That’s the market where I buy fruit.","The man who lives next door is a pilot."]},
+{t:"Too much / too many / enough / very",e:"too much + sayılamayan · too many + sayılabilen (gereğinden fazla). enough isimden önce (enough money), sıfattan sonra gelir (big enough). too + sıfat = fazla, sorun var; very + sıfat = çok, sorun olmayabilir.",f:"too many people / not enough time / not big enough",ex:["I’ve got too much homework.","There are too many people here.","I haven’t got enough money.","This coat isn’t big enough.","It’s very expensive, but I love it."]}],
+phr:{t:"Buying things (Alışverişte)",items:["Can I help you?","I’m just looking, thanks.","Do you have this in a medium?","Can I try it on?","Where are the changing rooms?","How much is it?","I’ll take it.","Can I pay by card?"]},
+lis:{t:"In a clothes shop",text:"Assistant: Hello, can I help you?\nCustomer: Yes, do you have this jacket in a large?\nAssistant: Let me check. Yes, here you are.\nCustomer: Can I try it on?\nAssistant: Of course. The changing rooms are over there.\nCustomer: It fits perfectly. How much is it?\nAssistant: It’s normally eighty pounds, but there’s a twenty percent discount today, so it’s sixty-four.\nCustomer: Great, I’ll take it. Can I pay by card?\nAssistant: Yes, no problem. Here’s your receipt.",
+q:[["What size does the customer want?",["Large","Medium","Small"],0],["How much does the customer pay?",["£64","£80","£60"],0],["How does the customer pay?",["By card","In cash","By phone"],0]]},
+spk:{p:["Are you a saver or a spender? What do you spend most money on?","Describe a product people should buy. Use who / which / where.","Do people earn enough in your country? Which jobs should earn more?","Role-play: buying clothes in a shop."],m:"I’m definitely a spender! I spend too much money on coffee and books. But this year I’m trying to save money to buy a laptop. I think teachers and nurses don’t earn enough. They are people who do very important jobs, so they should get more money."},
+wri:{task:"Görüş yazısı yaz: ‘Öğrencilere iyi notlar için para verilmeli mi?’ (120–140 kelime).",tips:["Giriş: konuyu tanıt ve görüşünü söyle.","İki gerekçe + bir karşı görüş.","Bağlaçlar: Firstly, Secondly, On the other hand, In conclusion.","Sonuçta görüşünü tekrar et."],m:"Some people think schools should pay students for good grades. In my opinion, this is not a good idea.\n\nFirstly, students should learn because learning is interesting and useful, not because they want money. If we pay them, they might stop studying when the money stops. Secondly, some students have problems which make studying difficult. It isn’t fair to give money only to students who find school easy.\n\nOn the other hand, money can motivate some teenagers, especially those who don’t enjoy school. A small reward might help them start.\n\nIn conclusion, I think there are better ways to motivate students, for example interesting lessons and good teachers. Paying for grades costs too much and teaches the wrong lesson."},
+quiz:[["A chef is a person ___ cooks in a restaurant.",["who","which","where"],0],["This is the shop ___ I bought my phone.",["where","who","which"],0],["There are too ___ cars in the city.",["many","much","enough"],0],["I can’t buy it. I haven’t got ___ money.",["enough","too","very"],0],["Can I ___ some money from you?",["borrow","lend","earn"],0],["Can I ___ these jeans ___?",["try / on","take / off","pay / back"],0]]},
+
+{n:9,t:"Nature",tr:"Doğa",
+lessons:[["9.1","Green living","Comparatives / superlatives","Nature"],["9.2","Into the wild","Articles","The outdoors"],["9.3","It could be because…","Making guesses","Animals"],["9.4","The Northern Lights","BBC video dersi","Doğal güzellikler"]],
+sum:"Çevre, doğa ve hayvanlar. Karşılaştırma (bigger, the most beautiful) ve artikelleri (a / an / the / artikelsiz) çalışırsın. Emin olmadığında tahmin yürütmeyi (It could be… / It must be…) öğrenirsin. Çevre konusundaki görüşlerini ve bir doğa gezisini anlatan bir seyahat blogu yazarsın.",
+words:[["environment","çevre","We must protect the environment."],["pollution","kirlilik","Air pollution is a big problem in large cities."],["recycle","geri dönüştürmek","We recycle paper and glass."],["climate change","iklim değişikliği","Climate change affects everyone."],["rainforest","yağmur ormanı","The Amazon is the largest rainforest in the world."],["desert","çöl","It hardly ever rains in the desert."],["waterfall","şelale","We swam under a beautiful waterfall."],["cliff","uçurum, yalıyar","Don’t walk too close to the edge of the cliff."],["coast","kıyı","We drove along the coast."],["valley","vadi","The village is in a green valley."],["wildlife","yaban hayatı","The national park is full of wildlife."],["endangered","nesli tükenmekte olan","Pandas are an endangered species."],["survive","hayatta kalmak","How long can you survive without water?"],["campsite","kamp alanı","We put up our tent at the campsite."]],
+gram:[{t:"Comparatives & superlatives",e:"Kısa sıfatlar: -er / the -est (cold → colder → the coldest). Uzun sıfatlar: more / the most. Düzensizler: good → better → the best, bad → worse → the worst, far → further → the furthest. Eşitlik: as … as / not as … as.",f:"bigger than / the biggest / more beautiful than",ex:["The city is noisier than the countryside.","This is the most beautiful beach I’ve ever seen.","Cycling is better for the environment than driving.","The village isn’t as busy as the city."]},
+{t:"Articles (a / an / the / —)",e:"a / an: ilk kez bahsedilen, ‘herhangi bir’, meslekler. the: bilinen, daha önce bahsedilen, tek olan (the sun, the sea). Artikel yok: genel anlamda çoğul ve sayılamayan isimler (Dogs are…, Water is…), çoğu ülke ve şehir adı.",f:"a bear → the bear / the sun / Dogs are…",ex:["I saw a bear. The bear was huge.","The sun is shining.","Dogs are friendly animals.","She’s an engineer."]}],
+phr:{t:"Making guesses (Tahmin)",items:["It could be a kind of bird.","It might be dangerous.","It’s probably very old.","It must be a zebra – it has stripes! (eminim)","It can’t be a cat – it’s too big. (olamaz)","I’m not sure, but I think…"]},
+lis:{t:"Three green ideas",text:"In today’s programme we look at three simple green ideas. The first is easy: turn off lights and computers when you’re not using them. A typical family can save around fifteen percent on their electricity bill this way. Second, try to eat less meat. Producing meat uses much more water than growing vegetables. And third, walk or cycle for short journeys. It’s healthier, cheaper, and of course better for the planet than taking the car.",
+q:[["How much can a family save by turning things off?",["About 15%","About 50%","About 5%"],0],["Why does the speaker suggest eating less meat?",["It uses more water","It’s too expensive","It’s unhealthy"],0],["What should you do for short journeys?",["Walk or cycle","Take a taxi","Take the bus"],0]]},
+spk:{p:["What are the biggest green issues in your country?","Would you prefer to live in the city or the countryside? Compare them.","Guessing game: describe an animal; your partner guesses with could / might / must.","Describe the most beautiful natural place you have visited."],m:"I think the countryside is quieter and healthier than the city, and the air is cleaner. But the city is more exciting and there are better jobs. For me, the most beautiful place I’ve visited is a valley in the Black Sea region. It was greener than anywhere I’ve seen, and there was a huge waterfall."},
+wri:{task:"Doğal güzelliği olan bir yeri anlatan seyahat blogu yaz (120–140 kelime).",tips:["Nerede, ne zaman, kiminle gittin?","Karşılaştırma ve üstünlük sıfatları kullan.","Duyularını anlat: ne gördün, duydun, hissettin?","Okuyucuya bir tavsiye ver."],m:"My trip to the Kaçkar Mountains\n\nLast August I spent four days in the Kaçkar Mountains in north-east Turkey. It was the most amazing trip of my life.\n\nWe stayed at a small campsite in a green valley. Every morning we walked for hours past waterfalls and lakes. The air was fresher and cleaner than in the city, and at night the sky was full of stars. On the second day we saw an eagle above the cliffs – it was bigger than I expected!\n\nThe walking was harder than I thought, and it can be very cold at night, so take warm clothes. But if you love nature, this is one of the best places you can visit."},
+quiz:[["Istanbul is ___ than Ankara.",["bigger","more big","biggest"],0],["This is the ___ day of the year.",["hottest","hotter","most hot"],0],["My English is ___ than last year.",["better","gooder","best"],0],["___ moon goes round the Earth.",["The","A","An"],0],["I saw ___ eagle in the mountains.",["an","a","the"],0],["It has black and white stripes. It ___ be a zebra!",["must","can’t","mustn’t"],0]]},
+
+{n:10,t:"Society",tr:"Toplum",
+lessons:[["10.1","Top cities","Uses of like","Describing a city"],["10.2","Crime and punishment","Present / past passive","Crime and punishment"],["10.3","There’s a problem","Complaining","Problems"],["10.4","Mary’s Meals","BBC video dersi","Önemli bir toplumsal konu"]],
+sum:"Şehir hayatı, suç ve ceza, şikâyetler. ‘like’ kelimesinin farklı kullanımlarını (What’s it like? / What does she look like?) ve edilgen yapıyı (is made / was stolen) öğrenirsin. Kibarca şikâyet etmeyi çalışır, resmî bir e-posta yazarsın.",
+words:[["crowded","kalabalık","The metro is very crowded in the morning."],["polluted","kirli (hava, su)","The river is very polluted."],["lively","hareketli, canlı","It’s a lively city with lots of cafés."],["safe / dangerous","güvenli / tehlikeli","Is it safe to walk here at night?"],["cosmopolitan","kozmopolit","London is a very cosmopolitan city."],["crime","suç","Crime has gone down this year."],["thief","hırsız","A thief stole my wallet."],["burglar","ev hırsızı","Burglars broke into our house."],["steal","çalmak","Someone stole her bike."],["arrest","tutuklamak","The police arrested two men."],["fine","para cezası","He had to pay a fine for speeding."],["prison","hapishane","He spent three years in prison."],["community service","kamu hizmeti cezası","She got a hundred hours of community service."],["complain","şikâyet etmek","I want to complain about the noise."]],
+gram:[{t:"Uses of like",e:"What’s it like? → nasıl bir şey? (betimleme) · What does she like? → neyi sever? · What does he look like? → dış görünüşü nasıl? · Would you like…? → ister misin? (teklif) · It’s like Paris → Paris’e benziyor.",f:"What’s … like? / What does … look like?",ex:["What’s your new flat like? — It’s small but bright.","What does your brother like? — Football and video games.","What does she look like? — She’s tall with dark hair.","Would you like a coffee?"]},
+{t:"Present & past passive",e:"Eylemi yapanın değil, eylemin kendisinin önemli olduğu durumlarda. am/is/are + V3 (şimdi), was/were + V3 (geçmiş). Yapanı söylemek istersen ‘by’ kullanılır.",f:"is made / was stolen (by…)",ex:["Coffee is grown in Brazil.","My car was stolen last night.","The thief was arrested by the police.","English is spoken all over the world."]}],
+phr:{t:"Complaining (Şikâyet etme)",items:["Excuse me, I’m afraid there’s a problem with my room.","I’d like to complain about the noise.","The air conditioning doesn’t work.","Could you do something about it, please?","I’m sorry to hear that. I’ll sort it out right away.","Would you like to change rooms?"]},
+lis:{t:"Two cities",text:"Man: Emma, what’s Barcelona like?\nEmma: It’s fantastic! It’s really lively and cosmopolitan, and the food is amazing. But it can be very crowded in summer, with lots of tourists.\nMan: And what about Oslo?\nEmma: Oslo’s quieter and very safe. It’s clean, too – the air isn’t polluted at all. But it’s expensive. A coffee costs about five euros!",
+q:[["What’s the problem with Barcelona in summer?",["It’s very crowded","It’s polluted","It’s cold"],0],["Which city is very safe?",["Oslo","Barcelona","Both cities"],0],["How much is a coffee in Oslo?",["About €5","About €2","About €10"],0]]},
+spk:{p:["What’s your city like? Use five adjectives from the unit.","Decide a punishment: a teenager writes graffiti on a school wall. A man steals food from a supermarket.","What problems are there at your school or workplace? Complain politely.","Talk about an important social issue in your country."],m:"My city is lively and quite cosmopolitan, but it’s very crowded and the traffic is terrible. I think the teenager who wrote graffiti should do community service – for example, he should clean the wall. Prison isn’t a good idea for young people."},
+wri:{task:"Bir otele resmî şikâyet e-postası yaz (100–120 kelime). Resmî ifadeler kullan.",tips:["Dear Sir or Madam, ile başla.","Amacını belirt: I am writing to complain about…","Sorunları sırala, edilgen yapı kullan (was not cleaned).","Ne istediğini yaz ve Yours faithfully, ile bitir. (Kısaltma kullanma: I am, not I’m)"],m:"Dear Sir or Madam,\n\nI am writing to complain about my stay at your hotel from 12 to 15 June.\n\nFirstly, our room was not cleaned during our stay, and the towels were not changed. Secondly, the air conditioning did not work, so it was very difficult to sleep. I reported the problem to reception twice, but nothing was done. Finally, we were charged for breakfast, although it was included in the price.\n\nI would be grateful if you could refund the cost of the breakfast and explain what happened.\n\nI look forward to hearing from you.\n\nYours faithfully,\nAyşe Kaya"},
+quiz:[["What’s your new flat ___? — It’s small but bright.",["like","likes","look"],0],["This bridge ___ in 1973.",["was built","built","is built"],0],["Rice ___ in many Asian countries.",["is grown","grows","was grow"],0],["My phone ___ yesterday!",["was stolen","stole","is stolen"],0],["The police ___ the thief last night.",["arrested","fined","stole"],0],["I’d like to ___ about the noise in my room.",["complain","arrest","punish"],0]]},
+
+{n:11,t:"Technology",tr:"Teknoloji",
+lessons:[["11.1","Keeping in touch","Present perfect","Communication"],["11.2","Make a difference","Real conditionals + when","Feelings"],["11.3","I totally disagree","Giving opinions","Internet terms"],["11.4","Is TV Bad For Kids?","BBC video dersi","Vazgeçemediğin teknoloji"]],
+sum:"İletişim, sosyal medya ve internet. Present perfect’i just / already / yet ile kullanırsın. Gerçek olasılıklar için birinci koşul cümlesini (If…, …will) ve ‘when’ farkını öğrenirsin. Görüş bildirme ve katılmama kalıplarıyla tartışır, görüş yazısı yazarsın.",
+words:[["keep in touch","iletişimi sürdürmek","We keep in touch by video call."],["text","mesaj atmak","Text me when you arrive."],["upload / download","yüklemek / indirmek","I uploaded the photos last night."],["log in / log out","giriş / çıkış yapmak","You need a password to log in."],["password","şifre","Never share your password."],["social media","sosyal medya","I spend too much time on social media."],["post","paylaşmak; gönderi","She posted a photo of her dinner."],["follow","takip etmek","How many people follow you?"],["delete","silmek","I deleted the app from my phone."],["update","güncellemek","You need to update your software."],["annoyed","sinirli, canı sıkkın","I get annoyed when my phone is slow."],["excited","heyecanlı","I’m excited about my new laptop."],["nervous","gergin","I was nervous before the online interview."],["addicted (to)","bağımlı","Some teenagers are addicted to games."]],
+gram:[{t:"Present perfect: just, already, yet",e:"just: az önce · already: (beklenenden) çoktan · yet: henüz (olumsuz ve sorularda, cümle sonunda). Sonucu şimdi önemli olan yakın geçmiş eylemler.",f:"I’ve just… / I’ve already… / Have you… yet?",ex:["I’ve just sent you an email.","She’s already downloaded the app.","Have you finished yet?","I haven’t replied yet."]},
+{t:"Real conditionals (If / when)",e:"First conditional: If + present simple, will + fiil → gerçek, olası bir durum ve sonucu. ‘If’ olabilir de olmayabilir de; ‘when’ olacağından eminsin. If/when’den sonra will kullanılmaz!",f:"If you…, you’ll… / When I get home, I’ll…",ex:["If you spend too long online, you’ll get tired.","If it rains, we won’t go out.","When I get home, I’ll call you.","What will you do if you lose your phone?"]}],
+phr:{t:"Giving opinions (Görüş bildirme)",items:["In my opinion, …","I think / I don’t think …","Personally, I feel that …","I totally agree.","I see your point, but …","I’m not sure about that.","I totally disagree."]},
+lis:{t:"Is the internet good for us?",text:"Ali: In my opinion, the internet makes our lives much easier. I do my shopping online, I bank online…\nJess: That’s true, but I think people spend too much time on their phones. My brother is on social media for five hours a day!\nAli: I see your point, but it’s also how we keep in touch. My family lives abroad and we video-chat every Sunday.\nJess: OK, I agree it’s useful for that. But I still think we all need a break sometimes.",
+q:[["What does Ali do online?",["Shopping and banking","Gaming","Studying"],0],["How long is Jess’s brother on social media?",["Five hours a day","Two hours a day","Ten hours a day"],0],["When does Ali video-chat with his family?",["Every Sunday","Every evening","Once a month"],0]]},
+spk:{p:["How do you keep in touch with friends and family?","What have you already done today? What haven’t you done yet?","What will happen if people stop using social media for a month?","Which piece of technology couldn’t you live without? Why?"],m:"Today I’ve already been to class and I’ve just finished lunch, but I haven’t done my homework yet. I couldn’t live without my phone, because I keep in touch with my family on it. If people stop using social media for a month, I think they’ll feel nervous at first, but they’ll sleep better and read more."},
+wri:{task:"Görüş yazısı: ‘Teknoloji bizi daha az sosyal yapıyor mu?’ (120–140 kelime). Zamirleri doğru kullan (it, they, this) ve tekrarlardan kaçın.",tips:["Görüşünü giriş paragrafında net söyle.","İki gerekçe, bir örnek.","Tekrardan kaçınmak için zamir kullan: social media → it, people → they.","Sonuç cümlesi: To sum up, …"],m:"Many people say technology is making us less social. I partly agree with this.\n\nOn the one hand, technology helps us stay connected. My grandparents live in another city, but we video-chat every week, and they can see their grandchildren grow up. Without it, we would only talk a few times a year.\n\nOn the other hand, people often look at their phones when they are with friends. At dinner, I sometimes see a whole family sitting together in silence, each person looking at a screen. This is sad, because real conversations are disappearing.\n\nTo sum up, technology itself is not the problem; the way we use it is. If we put our phones away when we are with people, we will enjoy the best of both worlds."},
+quiz:[["I’ve ___ finished my homework. Can I go out now?",["just","yet","ever"],0],["Have you replied to her message ___?",["yet","already","just"],0],["If you ___ hard, you’ll pass the exam.",["study","will study","studied"],0],["When I ___ home, I’ll text you.",["get","will get","got"],0],["You need a password to ___ in.",["log","sign","delete"],0],["I see your point, ___ I don’t agree.",["but","so","because"],0]]},
+
+{n:12,t:"Fame",tr:"Şöhret",
+lessons:[["12.1","Caught on film","Reported speech","Film"],["12.2","A lucky break","Hypothetical conditionals (present/future)","Suffixes"],["12.3","What can I do for you?","Requests and offers","Collocations"],["12.4","Billion Dollar Man","BBC video dersi","Hedefler ve hayaller"]],
+sum:"Sinema, şöhret ve hayaller. Birinin söylediğini aktarmak için dolaylı anlatımı (reported speech) ve hayalî durumlar için ikinci koşul cümlesini (If I were famous, I would…) öğrenirsin. Kibar rica ve teklif kalıplarını, sıfat/isim yapan ekleri (-ful, -ous, -ion) çalışırsın. Ünlü bir kişi ya da çocukluk hayallerin hakkında yazarsın.",
+words:[["blockbuster","gişe rekortmeni film","It was the biggest blockbuster of the year."],["director","yönetmen","Who’s the director of this film?"],["plot","olay örgüsü","The plot was difficult to follow."],["cast","oyuncu kadrosu","The film has a great cast."],["sequel","devam filmi","The sequel wasn’t as good as the first film."],["review","eleştiri yazısı","The film got excellent reviews."],["audience","seyirci","The audience loved the show."],["celebrity","ünlü kişi","Many celebrities live in Los Angeles."],["fame","şöhret","Fame can change people."],["success / successful","başarı / başarılı","The concert was a huge success."],["ambition","hedef, hırs","My ambition is to become a pilot."],["award","ödül","He won an award for best actor."],["lucky break","şanslı fırsat","Her lucky break came when a director saw her video."],["famous / dangerous / helpful","-ous, -ful ekli sıfatlar","Fame → famous, danger → dangerous, help → helpful."]],
+gram:[{t:"Reported speech (Dolaylı anlatım)",e:"Söyleneni aktarırken zaman bir adım geriye gider: present → past, will → would, can → could, past simple → past perfect. ‘say’ kişisiz (She said that…), ‘tell’ kişiyle kullanılır (She told me that…). Zamirler ve this/here gibi kelimeler de değişir.",f:"“I love it.” → She said (that) she loved it.",ex:["“I love this film.” → She said she loved that film.","“I’ll call you.” → He said he would call me.","“We can’t come.” → They told us they couldn’t come.","“I’m tired.” → He told me he was tired."]},
+{t:"Second conditional (Hayalî durumlar)",e:"Şu an ya da gelecekte gerçek olmayan, pek olası olmayan durumlar. If + past simple, would + fiil. ‘be’ fiili tüm öznelerle genellikle ‘were’ olur: If I were…",f:"If I were famous, I’d (would)…",ex:["If I were famous, I’d buy a house by the sea.","If I won the lottery, I wouldn’t stop working.","What would you do if you met your favourite actor?","She’d travel more if she had more money."]}],
+phr:{t:"Requests and offers (Rica ve teklif)",items:["Could you book a table for me?","Would you mind calling a taxi?","Can I leave my bag here?","Shall I carry that for you?","I’ll get it for you.","Of course. / No problem. / Sure.","I’m afraid I can’t."]},
+lis:{t:"A lucky break",text:"Ten years ago, Sam was a waiter in a small café. In his free time he wrote songs and posted videos online. Then one day, a famous music producer saw one of his videos. She sent him a message and said she wanted to meet him. ‘I thought it was a joke,’ Sam says. A year later, his first album was a huge success. ‘Without that lucky break, I’d probably still be a waiter,’ he told us. ‘But fame isn’t easy. I can’t go to the supermarket without people taking photos!’",
+q:[["What was Sam’s job ten years ago?",["A waiter","A singer","A producer"],0],["Who saw his video?",["A music producer","A film director","A journalist"],0],["What’s difficult about fame for Sam?",["People take photos of him everywhere","He has no money","He has no free time"],0]]},
+spk:{p:["Talk about your favourite film: plot, cast, director, why you like it.","Would you like to be famous? Why / why not?","If you were famous, what would you do first?","Role-play: You are a hotel concierge. Your partner is a guest with requests."],m:"My favourite film is a science-fiction blockbuster. The plot is about astronauts who try to save the Earth. The cast is excellent and the director is one of the best in the world. I wouldn’t like to be really famous. If I were famous, I wouldn’t have a private life, and I’d hate that!"},
+wri:{task:"Çocukken ne olmak istediğini ve bugün ne düşündüğünü yaz (120–140 kelime).",tips:["Çocukluk hayalini used to / wanted to ile anlat.","Birinin sana söylediğini aktar (My dad said…).","Hayalî durum: If I were…, I would…","Bugünkü hedefinle bitir."],m:"When I was a child, I wanted to be a famous footballer. I used to play in the street every day after school, and I had posters of my favourite players on my bedroom wall.\n\nMy father always told me that I needed to study as well as play. He said that only a few people became professional players. I didn’t believe him then, but now I know he was right.\n\nToday I’m studying to be a sports teacher. I still love football, and I play in a team at weekends. If I were a professional player, I would earn a lot of money, but I would also have a lot of pressure. My ambition now is to help children enjoy sport, just like I did."},
+quiz:[["She said she ___ tired.",["was","is","be"],0],["He told ___ he would come.",["me","to me","for me"],0],["If I ___ rich, I’d travel the world.",["were","am","will be"],0],["What ___ you do if you saw a ghost?",["would","will","did"],0],["Would you mind ___ the window?",["opening","to open","open"],0],["The film had a great ___ of famous actors.",["cast","plot","sequel"],0]]}
+];
+
+const EX={
+"midterm-a":{t:"Ara sınav A",scope:"Ünite 1–6",min:45,secs:[
+{t:"Dilbilgisi",qs:[["Where ___ you go on holiday last year?",["did","do","were"],0],["She ___ in a bank. She’s a cashier.",["works","is working","work"],0],["Look out of the window! It ___.",["’s snowing","snows","snow"],0],["Who ___ the phone? — My brother did.",["answered","did answer","does answered"],0],["We ___ to the cinema tonight. I’ve bought the tickets.",["’re going","go","went"],0],["Have you ever ___ a horse?",["ridden","rode","ride"],0],["You ___ wear a seatbelt in the car. It’s the law.",["must","don’t have to","can"],0],["I was sleeping when the alarm ___.",["rang","was ringing","rings"],0],["I’ve had this car ___ 2019.",["since","for","from"],0],["Take an umbrella. It ___ rain.",["might","must","has"],0]]},
+{t:"Kelime",qs:[["We ___ well with our neighbours.",["get on","get up","get off"],0],["My train leaves from ___ 3.",["platform","journey","ferry"],0],["I need to ___ a decision soon.",["make","do","take"],0],["I can’t speak much. I’ve got a ___ throat.",["sore","pain","ill"],0],["He travels a long way to work every day. He has a long ___.",["commute","salary","deadline"],0],["Sorry, I’m busy. I’ll call you ___ later.",["back","up","out"],0]]},
+{t:"Okuma",text:"Hande is twenty-six and she works as a tour guide in Cappadocia. She started the job three years ago. Before that, she worked in an office in Istanbul, but she didn’t enjoy it. ‘I was sitting at a computer all day and I never saw the sun,’ she says. Now she spends most of her time outside. She usually starts work at five in the morning because many tourists want to see the hot-air balloons at sunrise. In the afternoon she takes groups to underground cities and old churches. She has met people from more than forty countries. ‘The salary isn’t very high, but I love my job,’ she says. ‘Next year I’m going to learn Spanish, because a lot of my visitors come from South America.’",
+qs:[["How long has Hande worked as a tour guide?",["For three years","For twenty-six years","For one year"],0],["Why didn’t she enjoy her office job?",["She was inside all day","The salary was low","Her boss was strict"],0],["Why does she start work so early?",["Tourists want to see the balloons at sunrise","It’s cooler in the morning","The buses leave early"],0],["What is she going to do next year?",["Learn Spanish","Move to South America","Change her job"],0]]},
+{t:"Dinleme",audio:"Hi Burak, it’s Selin. I’m calling about Saturday. We’re meeting at the station at ten, not nine, because the first train is cancelled. Don’t forget to bring your passport – we need it for the hotel. Oh, and it might be cold in the mountains, so bring a warm jacket. Call me back if you have any questions. Bye!",
+qs:[["What time are they meeting?",["At ten","At nine","At eleven"],0],["What must Burak bring for the hotel?",["His passport","His ticket","Some cash"],0],["Why should he bring a warm jacket?",["It might be cold in the mountains","It’s going to rain","The hotel is cold"],0]]}],
+wri:{task:"Bir arkadaşına son tatilini anlatan e-posta yaz (100–120 kelime). Past simple ve past continuous kullan.",m:"Hi Ece,\n\nI’ve just come back from a week in Fethiye! We stayed in a small hotel near the beach. Every morning we went swimming, and in the afternoons we visited old towns and markets.\n\nThe best day was Thursday. We were walking along the coast when we found a tiny beach with no tourists. While we were swimming, a turtle swam right past us! I couldn’t believe it.\n\nThe only problem was the journey home – our bus had a three-hour delay. But I really want to go back next year. Have you been there?\n\nLove,\nMelis"}},
+
+"midterm-b":{t:"Ara sınav B",scope:"Ünite 1–6",min:45,secs:[
+{t:"Dilbilgisi",qs:[["What time ___ your brother usually get up?",["does","do","is"],0],["I don’t mind ___ the washing-up.",["doing","to do","do"],0],["How often ___ you go to the gym?",["do","are","have"],0],["Who ___ you this present? — My aunt.",["gave","did give","does give"],0],["I ___ never been to London.",["have","has","am"],0],["We ___ go to school on Sundays.",["don’t have to","mustn’t","can’t to"],0],["While I ___ along the street, I saw an old friend.",["was walking","walked","am walking"],0],["She decided ___ a new car.",["to buy","buying","buy"],0],["How long ___ you known your best friend?",["have","did","do"],0],["In 2050, people ___ live on Mars – who knows?",["might","must","have to"],0]]},
+{t:"Kelime",qs:[["He’s a ___. He puts out fires.",["firefighter","pilot","nurse"],0],["After dinner, we ___ in front of the TV.",["chilled out","hung up","called back"],0],["Don’t forget your ___ – it’s very sunny.",["sun cream","suitcase","souvenir"],0],["She’s very ___. She goes running every day.",["fit","junk","ill"],0],["He ___ the exam, so he has to take it again.",["failed","passed","revised"],0],["Excuse me, how do I ___ to the station?",["get","go","arrive"],0]]},
+{t:"Okuma",text:"Last month, a school in Bursa tried an experiment. For one week, students had to leave their phones at home. At first, many students were unhappy. ‘I felt lost on the first day,’ says Mert, aged fifteen. ‘I didn’t know what to do in the breaks.’ But by Wednesday, things were changing. Students were playing football, chatting and reading in the breaks. Teachers said students were listening more carefully in class. Not everything was easy, though. Some parents didn’t like the idea because they couldn’t contact their children during the day. The school is now going to repeat the experiment every term, but students will be able to bring their phones for emergencies.",
+qs:[["How long was the experiment?",["One week","One month","One day"],0],["How did Mert feel on the first day?",["Lost","Happy","Angry"],0],["Why were some parents unhappy?",["They couldn’t contact their children","The breaks were too long","Students played football"],0],["What is the school going to do?",["Repeat the experiment every term","Stop the experiment","Ban phones forever"],0]]},
+{t:"Dinleme",audio:"Are you looking for a new way to keep fit? Come to Green Park Sports Centre! We’ve got a big swimming pool, a gym and yoga classes every evening. We’re open from seven in the morning until ten at night. This month, students get a thirty percent discount. Visit our website or just come in and say hello!",
+qs:[["What is there every evening?",["Yoga classes","Swimming lessons","Football matches"],0],["What time does the centre close?",["At 10 p.m.","At 7 p.m.","At 9 p.m."],0],["How big is the student discount?",["30%","13%","20%"],0]]}],
+wri:{task:"‘Formda ve sağlıklı kalmak için neler yapıyorum?’ başlıklı blog yazısı yaz (100–120 kelime). Present perfect + for/since kullan.",m:"How I stay healthy\n\nI’m not a sports star, but I try to keep fit. I’ve played basketball with my friends every Saturday for four years, and since last September I’ve also gone to the gym twice a week.\n\nFood is important too. I’ve stopped drinking fizzy drinks, and I try to eat fruit and vegetables every day. I sometimes eat junk food, but not very often.\n\nI think sleep is the most difficult part for me. I often stay up late on my phone. My next goal is to go to bed before midnight – it might help me feel less tired in the mornings!"}},
+
+"final-a":{t:"Final A",scope:"Ünite 1–12",min:60,secs:[
+{t:"Dilbilgisi",qs:[["I ___ live in a village, but now I live in a city.",["used to","use to","was"],0],["This is the man ___ helped me.",["who","which","where"],0],["There are too ___ people on this bus.",["many","much","enough"],0],["Mount Everest is the ___ mountain in the world.",["highest","higher","most high"],0],["My bike ___ last night.",["was stolen","stole","is stealing"],0],["If it rains tomorrow, we ___ at home.",["’ll stay","stayed","would stay"],0],["Have you finished your project ___?",["yet","already","just"],0],["“I love the film.” → She said she ___ the film.",["loved","loves","love"],0],["If I ___ more time, I’d learn the guitar.",["had","have","will have"],0],["We went to the market ___ buy vegetables.",["to","for","so"],0],["I’ve known her ___ ten years.",["for","since","ago"],0],["Could you tell me where ___?",["the station is","is the station","does the station"],0]]},
+{t:"Kelime",qs:[["Can you ___ me some money until Friday?",["lend","borrow","earn"],0],["Students get a fifteen percent ___.",["discount","receipt","refund"],0],["We should ___ plastic bottles.",["recycle","pollute","survive"],0],["The thief went to ___ for two years.",["prison","fine","crime"],0],["I text my cousins to keep ___ touch.",["in","on","at"],0],["The film’s ___ was boring – nothing happened.",["plot","cast","audience"],0],["He ___ up a new hobby: photography.",["took","gave","settled"],0],["I can’t wait! I’m so ___ about my holiday.",["excited","annoyed","bored"],0]]},
+{t:"Okuma",text:"In many cities around the world, people are opening ‘repair cafés’. These are places where you can take broken things – a lamp, a bike, a jacket – and volunteers help you fix them for free. The idea started in the Netherlands in 2009, and now there are repair cafés in many countries. The aim is simple: to throw away less and to save money. ‘People used to repair everything,’ says one volunteer, a retired engineer. ‘Now they just buy something new. If we fix more things, we’ll produce less rubbish.’ Visitors also say the cafés are a great way to meet neighbours. While you are waiting, you can have a cup of tea and chat.",
+qs:[["What happens at a repair café?",["Volunteers help you fix things for free","You can buy cheap new things","You can sell broken things"],0],["Where did the idea start?",["In the Netherlands","In Turkey","In the USA"],0],["What are the two aims?",["To throw away less and save money","To make money and find jobs","To sell coffee and meet people"],0],["What can visitors do while they wait?",["Have tea and chat","Watch a film","Learn to drive"],0]]},
+{t:"Dinleme",audio:"Good evening. Here is the news. Police have arrested two men after a famous painting was stolen from the City Museum on Monday night. The painting was found yesterday in a car near the airport. In other news, the city’s new bike scheme starts next week. If you download the app, you’ll be able to rent a bike for just one euro an hour. And finally, the weather: tomorrow will be sunny, but it might rain at the weekend.",
+qs:[["What was stolen from the museum?",["A painting","A car","A bike"],0],["Where was it found?",["In a car near the airport","At the station","In the museum café"],0],["How much does it cost to rent a bike?",["€1 an hour","€1 a day","€10 an hour"],0]]}],
+wri:{task:"Görüş yazısı: ‘Ünlüler çok fazla para kazanıyor.’ Katılıyor musun? (120–150 kelime). Görüş kalıpları, koşul cümleleri ve relative clause kullan.",m:"Many people believe that celebrities earn too much money. I mostly agree with this opinion.\n\nFirstly, some film stars and footballers earn more in one week than a nurse earns in ten years. Nurses and teachers are people who do very important jobs, so I don’t think this is fair.\n\nOn the other hand, celebrities work hard and their careers are often short. A footballer who gets a serious injury might stop playing at twenty-five. Also, they make a lot of money for their companies, so you could say they deserve some of it.\n\nIn my opinion, if famous people earned a little less and gave more to charity, the world would be a better place. To sum up, they should be well paid, but not as much as they are now."}},
+
+"final-b":{t:"Final B",scope:"Ünite 1–12",min:60,secs:[
+{t:"Dilbilgisi",qs:[["When I was a child, I didn’t ___ like vegetables.",["use to","used to","using to"],0],["That’s the restaurant ___ we had our first date.",["where","which","who"],0],["This coffee isn’t hot ___.",["enough","too","very"],0],["Cycling is ___ than driving.",["healthier","more healthy","healthiest"],0],["These cars ___ in Germany.",["are made","make","are making"],0],["When I ___ the results, I’ll tell you.",["get","will get","got"],0],["I’ve ___ seen that film. Let’s watch something else.",["already","yet","ever"],0],["“I’ll call you.” → He told me he ___ call me later.",["would","will","can"],0],["What would you do if you ___ a million dollars?",["won","win","will win"],0],["He was late ___ he missed the bus.",["because","so","to"],0],["I’d love to see ___ pyramids in Egypt.",["the","a","an"],0],["Do you know if ___ a lift in this building?",["there is","is there","there does"],0]]},
+{t:"Kelime",qs:[["I can’t ___ a new phone. It’s too expensive.",["afford","spend","invest"],0],["Keep your ___ in case you want to return it.",["receipt","refund","bargain"],0],["Pandas are an ___ species.",["endangered","polluted","lively"],0],["He had to pay a £100 ___ for parking there.",["fine","prison","crime"],0],["I forgot my ___, so I couldn’t log in.",["password","update","post"],0],["The second film is a ___ to the first one.",["sequel","review","director"],0],["After years of travelling, she decided to settle ___.",["down","up","off"],0],["The city centre is very ___ – there are people everywhere.",["crowded","safe","quiet"],0]]},
+{t:"Okuma",text:"Three years ago, Daniel decided to live without money for one year. He gave his car to a friend, left his flat and moved to a small farm. He grew his own vegetables and used solar power for his laptop. ‘At first it was really hard,’ he says. ‘I used to buy coffee every morning, and I missed it a lot!’ He got around by bike and swapped work for the things he needed: he helped a farmer, and in return the farmer gave him bread and milk. After the year finished, Daniel didn’t go back to his old life completely. ‘I spend much less now. If I want something, I ask myself: do I really need it?’ He has since written a book about his experience.",
+qs:[["How long did Daniel live without money?",["One year","Three years","Six months"],0],["What did he miss most at first?",["His morning coffee","His car","His flat"],0],["How did he get bread and milk?",["By helping a farmer","By selling vegetables","By cycling to a shop"],0],["How is his life different now?",["He spends much less","He lives on a farm","He doesn’t use a laptop"],0]]},
+{t:"Dinleme",audio:"Concierge: Good morning, how can I help you?\nGuest: Hi. Could you book a table for two at an Italian restaurant tonight?\nConcierge: Of course. What time would you like?\nGuest: Around eight. And would you mind calling a taxi for us at half past seven?\nConcierge: No problem. Shall I recommend a restaurant? Luigi’s is excellent and it’s only ten minutes away.\nGuest: Perfect, thank you.",
+qs:[["How many people is the table for?",["Two","Four","Eight"],0],["What time does the guest want the taxi?",["7.30","8.00","7.00"],0],["How far is Luigi’s?",["Ten minutes away","Thirty minutes away","Next door"],0]]}],
+wri:{task:"Hayran olduğun ünlü bir kişiyi anlat (120–150 kelime). Relative clause, geçmiş zamanlar ve dolaylı anlatım kullan.",m:"The famous person I admire most is a Turkish volleyball player who plays for the national team. I first saw her on TV when I was twelve, and she inspired me to start playing volleyball.\n\nShe grew up in a small town where there weren’t many sports facilities. She used to train in a school gym which was very old and cold. Her coach once said that she was the hardest-working player he had ever seen.\n\nWhat I admire most is not her success but her attitude. In an interview, she said she still felt nervous before every match, but she never let it stop her. She also helps young girls from poor families get into sport.\n\nIf I met her, I would ask her how she stays so calm under pressure."}}
+};
+
+/* ===================== STATE ===================== */
+const KEY="speakout-preint-v2",OLD="speakout-preint-v1";
+let DB={users:{},current:null};
+try{const r=localStorage.getItem(KEY);if(r)DB=Object.assign(DB,JSON.parse(r));}catch(e){}
+let oldData=null;try{const r=localStorage.getItem(OLD);if(r)oldData=JSON.parse(r);}catch(e){}
+let store=null;
+const blank=()=>({learned:{},quiz:{},exam:{},text:{},lis:{},log:[],days:{},wlog:{},custom:{}});
+function bind(){const u=DB.current&&DB.users[DB.current];if(!u){store=null;return;}u.data=Object.assign(blank(),u.data||{});store=u.data;}
+bind();
+function save(){try{localStorage.setItem(KEY,JSON.stringify(DB));}catch(e){}}
+const me=()=>DB.users[DB.current];
+function dkey(d){d=d||new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");}
+function bump(){const d=dkey();store.days[d]=(store.days[d]||0)+1;}
+function logAct(type,label,score){bump();store.log.unshift({t:Date.now(),type,label,score:score==null?null:score});store.log=store.log.slice(0,80);save();}
+function streak(){let n=0;const d=new Date();if(!store.days[dkey(d)])d.setDate(d.getDate()-1);while(store.days[dkey(d)]){n++;d.setDate(d.getDate()-1);}return n;}
+function wordsToday(){const t=dkey();return Object.values(store.learned).filter(v=>v===t).length;}
+const AV=["🦉","🦊","🐼","🐢","🐙","🐝","🚀","🌟","📚","🎧","⚽","🎨"];
+
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+const fmt=s=>esc(s).replace(/___/g,'<span class="blank" aria-label="boşluk"></span>');
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function toast(msg){const t=document.createElement("div");t.className="toast";t.textContent=msg;document.body.appendChild(t);setTimeout(()=>t.remove(),2600);}
+let uTab="ozet",fIdx=0,fFlip=false,wordMode="list",timerId=null,examTimer=null,rate=0.9,pendingTab=null,lastUnit=null;
+
+/* ===================== SPEECH ===================== */
+const synth=("speechSynthesis" in window)?window.speechSynthesis:null;let voice=null;
+function pickVoice(){if(!synth)return;const v=synth.getVoices();voice=v.find(x=>/en[-_]GB/i.test(x.lang))||v.find(x=>/^en/i.test(x.lang))||null;}
+if(synth){pickVoice();synth.onvoiceschanged=pickVoice;}
+function speak(text,isDialog){
+  if(!synth){toast("Bu cihazda sesli okuma desteklenmiyor. Metni göstererek çalışabilirsin.");return;}
+  synth.cancel();
+  const lines=isDialog?text.split("\n").filter(Boolean):[text];const pitch={};let k=0;
+  lines.forEach(l=>{let t=l,p=1;const m=l.match(/^([A-Z][A-Za-z ]{0,14}):\s*(.*)$/);
+    if(m){if(!(m[1] in pitch))pitch[m[1]]=(k++%2)?1.3:0.85;p=pitch[m[1]];t=m[2];}
+    const u=new SpeechSynthesisUtterance(t);if(voice)u.voice=voice;u.lang=voice?voice.lang:"en-GB";u.rate=rate;u.pitch=p;synth.speak(u);});
+}
+function stopSpeak(){if(synth)synth.cancel();}
+
+/* ===================== QUESTIONS ===================== */
+function qHTML(qs,key,start){start=start||0;
+  return qs.map((x,i)=>{const cor=x[1][x[2]];const opts=shuffle(x[1].slice());
+  return `<fieldset class="q" data-correct="${esc(cor)}"><legend><span class="qn">${start+i+1}</span><span>${fmt(x[0])}</span></legend>${opts.map(o=>`<label class="opt"><input type="radio" name="${key}-${start+i}" value="${esc(o)}"><span>${esc(o)}</span></label>`).join("")}</fieldset>`;}).join("");}
+function grade(root){let c=0,t=0,empty=0;root.querySelectorAll("fieldset.q").forEach(f=>{t++;const sel=f.querySelector("input:checked");if(!sel)empty++;const cor=f.dataset.correct;
+  f.querySelectorAll("label.opt").forEach(l=>{const v=l.querySelector("input").value;l.classList.remove("ok","bad");if(v===cor)l.classList.add("ok");else if(sel&&sel.value===v)l.classList.add("bad");});
+  if(sel&&sel.value===cor)c++;f.querySelectorAll("input").forEach(i=>i.disabled=true);});return{c,t,empty};}
+function verdict(p){return p>=85?"Harika! Bu konular sağlam.":p>=70?"İyi gidiyorsun; yanlışlarını tekrar et.":p>=50?"Geçer not. Dilbilgisi kartlarına bir kez daha bak.":"Bu üniteyi baştan tekrar etmeni öneririm.";}
+
+/* ===================== HELPERS ===================== */
+function setBar(title,back){
+  const p=store&&me();
+  $("#bar").innerHTML=(back?`<a class="back" href="#${back}">‹ Geri</a>`:"")+`<span class="ttl">${esc(title)}</span><span class="sp"></span>`+
+  (p?`<a class="hbtn" href="#dashboard" aria-label="Dashboard" title="Dashboard">📊</a><a class="hbtn" href="#profile" aria-label="Profil" title="Profil">${p.avatar}</a>`:"");
+}
+function allWords(u){const b=u.words.map((w,i)=>({en:w[0],tr:w[1],ex:w[2],k:u.n+"-"+i}));
+  const c=((store&&store.custom[u.n])||[]).map(w=>({en:w.en,tr:w.tr,ex:w.ex,k:"c"+u.n+"-"+w.id,id:w.id,mine:true}));return b.concat(c);}
+function learnedCount(u){return allWords(u).filter(w=>store.learned[w.k]).length;}
+function customCount(){return U.reduce((a,u)=>a+((store.custom[u.n]||[]).length),0);}
+Object.defineProperty(window,"TOTALW",{get:()=>U.reduce((a,u)=>a+allWords(u).length,0)});
+function unitPct(u){const w=learnedCount(u)/allWords(u).length;const q=store.quiz[u.n]!=null?store.quiz[u.n]/6:0;const l=store.lis["lis"+u.n]!=null?store.lis["lis"+u.n]:0;const wr=wc(store.text["u"+u.n]||"")>=50?1:0;
+  return Math.round((w*0.4+q*0.3+l*0.15+wr*0.15)*100);}
+function nextStep(){for(const u of U){if(learnedCount(u)<allWords(u).length)return[u,"kelime",`Ünite ${u.n} kelimelerini bitir (${learnedCount(u)}/${allWords(u).length})`];
+  if(store.quiz[u.n]==null)return[u,"test",`Ünite ${u.n} testini çöz`];if(store.lis["lis"+u.n]==null)return[u,"dinleme",`Ünite ${u.n} listening alıştırmasını yap`];
+  if(wc(store.text["u"+u.n]||"")<50)return[u,"yazma",`Ünite ${u.n} writing görevini yaz`];}
+  const ek=Object.keys(EX).find(k=>store.exam[k]==null);return ek?[null,ek,`${EX[ek].t} sınavını çöz`]:null;}
+function wc(s){return (s.trim().match(/\S+/g)||[]).length;}
+const avg=a=>a.length?Math.round(a.reduce((x,y)=>x+y,0)/a.length):null;
+
+/* ===================== VIEWS ===================== */
+function login(){
+  setBar("Giriş",null);
+  const ids=Object.keys(DB.users);
+  return `<section class="hero"><h1><span class="mark">Speakout</span><br>çalışma defterine giriş</h1>
+  <p class="lead">Kullanıcı adını yaz. Bu ad yeniyse profilin oluşturulur, varsa kaldığın yerden devam edersin.</p></section>
+  <form class="panel" id="loginf" autocomplete="off"><label for="uname" style="font-weight:700;display:block;margin-bottom:6px">Kullanıcı adı</label>
+  <input class="inp" id="uname" type="text" maxlength="20" placeholder="ör. ingilizce_kurdu" autocapitalize="none" spellcheck="false">
+  <p class="m" style="margin-top:6px">3–20 karakter; harf, rakam, _ . - kullanabilirsin. Gerçek adın yerine bir takma ad seçmeni öneririm.</p>
+  <div class="btnrow"><button class="btn pri" type="submit">Giriş yap</button></div>
+  ${!ids.length&&oldData?`<p class="m">Bu cihazda önceki sürümden kalan ilerleme var; oluşturacağın ilk profile aktarılacak.</p>`:""}</form>
+  ${ids.length?`<div class="panel"><h3>Bu cihazdaki profiller</h3><div class="chips">${ids.map(id=>`<button class="chip" data-act="pick" data-v="${esc(id)}">${DB.users[id].avatar} ${esc(DB.users[id].name)}</button>`).join("")}</div></div>`:""}
+  <p class="note">Profiller ve ilerleme yalnızca bu cihazın tarayıcısında saklanır; şifre yoktur. Aynı cihazı kullanan herkes profil listesini görebilir.</p>`;
+}
+function doLogin(raw){
+  const name=(raw||"").trim();
+  if(!/^[\p{L}\p{N}_.\-]{3,20}$/u.test(name)){toast("Kullanıcı adı 3–20 karakter olmalı: harf, rakam, _ . -");return;}
+  const id=name.toLocaleLowerCase("tr");
+  if(!DB.users[id]){const first=!Object.keys(DB.users).length;
+    DB.users[id]={name,avatar:AV[Math.floor(Math.random()*AV.length)],goal:10,examDate:"",created:Date.now(),data:(first&&oldData)?Object.assign(blank(),oldData):blank()};
+    toast("Profil oluşturuldu. Hoş geldin, "+name+"!");}
+  else toast("Tekrar hoş geldin, "+DB.users[id].name+"!");
+  enter(id);
+}
+function enter(id){DB.current=id;bind();save();if(location.hash!=="#dashboard")location.hash="#dashboard";else route();}
+
+function home(){
+  setBar("Speakout Pre-Intermediate",null);
+  const p=me(),learned=U.reduce((a,u)=>a+learnedCount(u),0),tests=Object.keys(store.quiz).length;
+  return `<section class="hero"><h1><span class="mark">Speakout Pre‑Intermediate</span><br>çalışma defteri</h1>
+  <p class="lead">Merhaba ${esc(p.name)} ${p.avatar}. Kelimeler, dilbilgisi, kalıplar, dinleme, konuşma, yazma ve her ünite için bir test; en altta 2 ara sınav ve 2 final var.</p>
+  <div class="stats"><div class="stat"><b>${learned}/${TOTALW}</b><span>öğrenilen kelime</span></div><div class="stat"><b>${tests}/12</b><span>bitirilen ünite testi</span></div><div class="stat"><b>${streak()} gün</b><span>çalışma serisi</span></div></div>
+  <div class="btnrow"><a class="btn pri" href="#dashboard">İlerlememi gör</a><a class="btn" href="#contents">Kitap içeriği</a></div></section>
+  <h2>Üniteler</h2><div class="units">${U.map(u=>{const p=Math.round(learnedCount(u)/allWords(u).length*100);const q=store.quiz[u.n];
+   return `<a class="tile" href="#unit-${u.n}">${q!=null?`<span class="badge">${q}/6</span>`:""}<div class="num">${u.n}</div><div class="nm">${esc(u.t)}</div><div class="tr">${esc(u.tr)}</div><div class="prog" aria-label="Kelime ilerlemesi %${p}"><i style="width:${p}%"></i></div></a>`;}).join("")}</div>
+  <h2>Sınavlar</h2><div class="exams">${Object.entries(EX).map(([k,e])=>`<a class="tile exam-t" href="#${k}">${store.exam[k]!=null?`<span class="badge">%${store.exam[k]}</span>`:""}<div class="nm">${esc(e.t)}</div><div class="tr">${esc(e.scope)}, ${e.min} dakika, okuma + dinleme + yazma</div></a>`).join("")}</div>
+  <p class="note">Alıştırmalar, örnek cümleler, dinleme metinleri ve sınavlar kitabın ünite konularına ve dilbilgisi programına göre özgün olarak yazıldı; kitaptaki metinlerin veya ses kayıtlarının kopyası değildir. Dinleme bölümleri cihazının sesli okuma özelliğini kullanır.</p>`;
+}
+
+function dashboard(){
+  const p=me();setBar("Dashboard","home");
+  const learned=U.reduce((a,u)=>a+learnedCount(u),0);
+  const qAvg=avg(Object.values(store.quiz).map(v=>v/6*100)),eAvg=avg(Object.values(store.exam));
+  const overall=Math.round(U.reduce((a,u)=>a+unitPct(u),0)/U.length);
+  const wt=wordsToday(),st=streak();
+  let left=null;if(p.examDate){const d=new Date(p.examDate+"T00:00:00"),t=new Date(dkey()+"T00:00:00");left=Math.round((d-t)/864e5);}
+  const days=[];for(let i=13;i>=0;i--){const d=new Date();d.setDate(d.getDate()-i);days.push([d,store.days[dkey(d)]||0]);}
+  const mx=Math.max(4,...days.map(x=>x[1]));
+  const chart=`<svg class="chart" viewBox="0 0 336 124" role="img" aria-label="Son 14 günün etkinlik sayıları">${days.map((x,i)=>{const h=x[1]?Math.max(4,x[1]/mx*88):3;const cls=i===13?"t":x[1]?"b":"z";
+    return `<rect class="${cls}" x="${i*24+4}" y="${96-h}" width="16" height="${h}" rx="3"><title>${x[0].toLocaleDateString("tr-TR",{day:"numeric",month:"long"})}: ${x[1]} etkinlik</title></rect><text x="${i*24+12}" y="114" text-anchor="middle">${x[0].getDate()}</text>`;}).join("")}</svg>`;
+  const ns=nextStep();
+  const weak=[];U.forEach(u=>{const q=store.quiz[u.n],l=store.lis["lis"+u.n];if(q!=null&&q<4)weak.push([u,`Test ${q}/6`,"gramer"]);if(l!=null&&l<0.67)weak.push([u,`Listening %${Math.round(l*100)}`,"dinleme"]);});
+  Object.keys(EX).forEach(k=>{if(store.exam[k]!=null&&store.exam[k]<60)weak.push([null,`${EX[k].t}: %${store.exam[k]}`,k]);});
+  const ico={quiz:"📝",lis:"🎧",exam:"🎓",write:"✍️",wq:"🔤",add:"➕"};
+  return `<section class="hero"><div class="phead"><div class="bigav">${p.avatar}</div><div><h1 style="margin:0">Merhaba, ${esc(p.name)}</h1><div class="m">Genel ilerleme: %${overall}</div></div></div>
+  <div class="prog" style="height:10px;margin-top:14px" aria-label="Genel ilerleme %${overall}"><i style="width:${overall}%"></i></div>
+  <div class="kpis">
+   <div class="kpi hot"><b>🔥 ${st} gün</b><span>çalışma serisi</span></div>
+   <div class="kpi"><b>${wt}/${p.goal}</b><span>bugün öğrenilen kelime</span><div class="prog"><i style="width:${Math.min(100,wt/p.goal*100)}%"></i></div></div>
+   <div class="kpi"><b>${learned}/${TOTALW}</b><span>toplam kelime</span></div>
+   <div class="kpi"><b>${customCount()}</b><span>eklediğin kelime</span></div>
+   <div class="kpi"><b>${qAvg==null?"–":"%"+qAvg}</b><span>ünite testi ortalaması</span></div>
+   <div class="kpi"><b>${eAvg==null?"–":"%"+eAvg}</b><span>sınav ortalaması</span></div>
+   ${left!=null?`<div class="kpi"><b>${left>0?left+" gün":left===0?"Bugün!":"Geçti"}</b><span>sınavına kalan</span></div>`:""}
+  </div></section>
+  ${ns?`<div class="panel next"><h3>Sıradaki adım</h3><p>${esc(ns[2])}</p><button class="btn pri" data-act="goto" data-u="${ns[0]?ns[0].n:""}" data-v="${ns[1]}">Başla</button></div>`:`<div class="panel next"><h3>Tebrikler!</h3><p>Bütün ünite ve sınavları tamamladın. Zayıf alanlarını tekrar etmeye devam et.</p></div>`}
+  <div class="panel"><h3>Son 14 gün</h3><p class="m">Her çubuk o gün yaptığın etkinlik sayısı (öğrenilen kelime, test, dinleme, yazma, sınav). Sarı çubuk bugün.</p>${chart}</div>
+  <div class="panel"><h3>Ünite ilerlemesi</h3><p class="m">Kelimeler %40, test %30, listening %15, writing %15 ağırlıkla hesaplanır.</p>
+   ${U.map(u=>{const pc=unitPct(u),q=store.quiz[u.n],l=store.lis["lis"+u.n];return `<a class="urow" href="#unit-${u.n}"><span class="n">${u.n}</span><span><b>${esc(u.t)}</b><div class="meta">Kelime ${learnedCount(u)}/${allWords(u).length}, test ${q!=null?q+"/6":"–"}, listening ${l!=null?"%"+Math.round(l*100):"–"}, writing ${wc(store.text["u"+u.n]||"")>=50?"✓":"–"}</div><div class="prog"><i style="width:${pc}%"></i></div></span><span class="pct">%${pc}</span></a>`;}).join("")}</div>
+  <div class="panel"><h3>Sınav sonuçları</h3>${Object.entries(EX).map(([k,e])=>{const v=store.exam[k];return `<a class="urow" href="#${k}"><span class="n">🎓</span><span><b>${esc(e.t)}</b><div class="meta">${esc(e.scope)}</div><div class="prog"><i style="width:${v||0}%"></i></div></span><span class="pct">${v!=null?"%"+v:"–"}</span></a>`;}).join("")}</div>
+  <div class="panel"><h3>Tekrar etmen gerekenler</h3>${weak.length?weak.map(w=>`<div class="act"><span>⚠️</span><span>${w[0]?`Ünite ${w[0].n} ${esc(w[0].t)}: `:""}${esc(w[1])}</span><button class="btn" style="margin-left:auto;padding:5px 12px" data-act="goto" data-u="${w[0]?w[0].n:""}" data-v="${w[2]}">Tekrar et</button></div>`).join(""):`<p class="m">Şimdilik zayıf alan yok. Test ve sınav çözdükçe %67’nin altındaki sonuçlar burada görünecek.</p>`}</div>
+  <div class="panel"><h3>Son etkinlikler</h3>${store.log.length?store.log.slice(0,10).map(a=>`<div class="act"><span>${ico[a.type]||"•"}</span><span>${esc(a.label)}${a.score?` <b>${esc(a.score)}</b>`:""}</span><span class="when">${new Date(a.t).toLocaleString("tr-TR",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"})}</span></div>`).join(""):`<p class="m">Henüz etkinlik yok. Bir ünite testi ya da listening alıştırmasıyla başla.</p>`}</div>`;
+}
+
+function profile(){
+  const p=me();setBar("Profil","dashboard");
+  const since=new Date(p.created).toLocaleDateString("tr-TR",{day:"numeric",month:"long",year:"numeric"});
+  return `<section class="hero"><div class="phead"><div class="bigav">${p.avatar}</div><div><h1 style="margin:0">${esc(p.name)}</h1><div class="m">${since} tarihinden beri üye, ${Object.keys(store.days).length} gün çalıştı</div></div></div></section>
+  <div class="panel"><h3>Avatar</h3><div class="chips">${AV.map(a=>`<button class="chip avc" data-act="avatar" data-v="${a}" aria-pressed="${p.avatar===a}" aria-label="Avatar ${a}">${a}</button>`).join("")}</div></div>
+  <div class="panel"><h3>Günlük kelime hedefi</h3><div class="chips">${[5,10,15,20].map(g=>`<button class="chip" data-act="goal" data-v="${g}" aria-pressed="${p.goal===g}">${g} kelime</button>`).join("")}</div></div>
+  <div class="panel"><h3>Sınav tarihim</h3><p class="m">Girersen Dashboard’da geri sayım görünür.</p><input class="inp" type="date" id="examdate" value="${esc(p.examDate||"")}"></div>
+  <div class="panel"><h3>Hesap</h3><div class="btnrow"><a class="btn pri" href="#dashboard">Dashboard’a git</a><button class="btn" data-act="logout">Çıkış yap / kullanıcı değiştir</button></div>
+  <div class="btnrow"><button class="btn danger" data-act="reset">İlerlemeyi sıfırla</button><button class="btn danger" data-act="delete">Profili sil</button></div>
+  <p class="m">Silme ve sıfırlama geri alınamaz; onay için butona iki kez dokunman gerekir.</p></div>`;
+}
+
+function contents(){
+  setBar("Kitap içeriği","home");
+  return `<section class="hero"><h1>Kitap içeriği</h1><p class="lead">Her ünite 4 dersten oluşur: iki ana ders (dilbilgisi + kelime), bir iletişim dersi (fonksiyonel dil) ve bir BBC video dersi. Sonunda Lookback tekrar sayfası bulunur.</p></section>
+  ${U.map(u=>`<div class="contents-u panel"><h3><a href="#unit-${u.n}">Ünite ${u.n}: ${esc(u.t)}</a> <span style="color:var(--muted);font-weight:500">(${esc(u.tr)})</span></h3>
+   ${u.lessons.map(l=>`<div class="lesson"><div class="c">${l[0]}</div><div><b>${esc(l[1])}</b><div class="m">Dilbilgisi / işlev: ${esc(l[2])}<br>Kelime / konu: ${esc(l[3])}</div></div></div>`).join("")}</div>`).join("")}`;
+}
+
+const TABS=[["ozet","Özet"],["kelime","Kelimeler"],["gramer","Dilbilgisi"],["kalip","Kalıplar"],["dinleme","Listening"],["konusma","Speaking"],["yazma","Writing"],["test","Ünite testi"]];
+function unit(n){
+  const u=U[n-1];setBar(`Ünite ${u.n}: ${u.t}`,"home");
+  return `<div class="uhead"><div class="big">${u.n}</div><div><h1><span class="mark">${esc(u.t)}</span></h1><div class="tr">${esc(u.tr)}, tamamlama %${unitPct(u)}</div></div></div>
+  <nav class="tabs" role="tablist">${TABS.map(t=>`<button class="tab" role="tab" data-act="tab" data-v="${t[0]}" aria-selected="${uTab===t[0]}">${t[1]}</button>`).join("")}</nav>
+  <div id="tabc">${tabContent(u)}</div>`;
+}
+function tabContent(u){
+  switch(uTab){
+  case "ozet":return `<div class="panel"><h3>Bu ünitede</h3><p>${esc(u.sum)}</p></div><div class="panel"><h3>Dersler</h3>${u.lessons.map(l=>`<div class="lesson"><div class="c">${l[0]}</div><div><b>${esc(l[1])}</b><div class="m">${esc(l[2])}, ${esc(l[3])}</div></div></div>`).join("")}</div>
+   <div class="panel"><h3>Önerilen çalışma sırası</h3><ol class="tips"><li>Kelimeleri liste hâlinde oku, sonra kartlarla kendini test et.</li><li>Dilbilgisi kartlarını oku, örnekleri sesli dinle ve tekrar et.</li><li>Kalıpları yüksek sesle söyle.</li><li>Listening metnini önce metni görmeden dinle.</li><li>Speaking sorularını süre tutarak cevapla.</li><li>Writing görevini yaz, sonra örnek cevapla karşılaştır.</li><li>Ünite testini çöz.</li></ol></div>`;
+  case "kelime":return words(u);
+  case "gramer":return u.gram.map(g=>`<div class="panel"><h3>${esc(g.t)}</h3><p>${esc(g.e)}</p><div class="formula">${esc(g.f)}</div><ul class="exs">${g.ex.map(x=>`<li><button class="icon" data-act="say" data-t="${esc(x)}" aria-label="Dinle">▶</button><span>${esc(x)}</span></li>`).join("")}</ul></div>`).join("");
+  case "kalip":return `<div class="panel"><h3>${esc(u.phr.t)}</h3><p style="color:var(--muted)">Her kalıba dokunup dinle, sonra sesli tekrar et.</p><ul class="exs">${u.phr.items.map(x=>`<li><button class="icon" data-act="say" data-t="${esc(x)}" aria-label="Dinle">▶</button><span>${esc(x)}</span></li>`).join("")}</ul></div>`;
+  case "dinleme":return listening(u.lis.text,u.lis.q,"lis"+u.n,u.lis.t);
+  case "konusma":return `<div class="panel"><h3>Konuşma görevleri</h3><p style="color:var(--muted)">Bir soru seç, süreyi başlat ve 60 saniye boyunca İngilizce konuş. Mümkünse kendini telefonla kaydet.</p>${u.spk.p.map((p,i)=>`<div class="prompt"><span class="qn">${i+1}</span><span>${esc(p)}</span></div>`).join("")}
+   <div class="btnrow" style="align-items:center"><span class="timer" id="tm">1:00</span><button class="btn pri" data-act="timer">Süreyi başlat</button></div></div>
+   <div class="panel"><h3>Yararlı kalıplar</h3><div class="chips">${u.phr.items.slice(0,6).map(x=>`<button class="chip" data-act="say" data-t="${esc(x)}">${esc(x)}</button>`).join("")}</div></div>
+   <div class="panel"><details><summary>Örnek cevabı göster</summary><div class="model">${esc(u.spk.m)}</div><div class="btnrow"><button class="btn" data-act="say" data-t="${esc(u.spk.m)}">▶ Dinle</button></div></details></div>`;
+  case "yazma":return writing(u.wri.task,u.wri.tips,u.wri.m,"u"+u.n);
+  case "test":return `<div class="panel" id="quiz"><h3>Ünite ${u.n} testi</h3>${store.quiz[u.n]!=null?`<p style="color:var(--muted)">Son puanın: ${store.quiz[u.n]}/6</p>`:""}${qHTML(u.quiz,"qz"+u.n)}<div class="btnrow"><button class="btn pri" data-act="checkquiz">Cevapları kontrol et</button><button class="btn" data-act="retab">Yeniden başla</button></div><div id="qres"></div></div>`;
+  }
+}
+function words(u){
+  const W=allWords(u),mine=W.filter(w=>w.mine).length;
+  const head=`<div class="btnrow"><button class="btn ${wordMode==="list"?"pri":""}" data-act="wmode" data-v="list">Liste</button><button class="btn ${wordMode==="card"?"pri":""}" data-act="wmode" data-v="card">Kartlar</button><button class="btn ${wordMode==="quiz"?"pri":""}" data-act="wmode" data-v="quiz">Kelime testi</button></div>
+  <p class="m">${learnedCount(u)}/${W.length} öğrenildi (${mine} tanesi senin eklediğin), bugün ${wordsToday()}/${me().goal}</p>`;
+  if(wordMode==="card"){const i=fIdx%W.length,w=W[i];
+    return head+`<div class="flash" data-act="flip" role="button" tabindex="0" aria-label="Kartı çevir">${w.mine?`<span class="m">Benim kelimem</span>`:""}${fFlip?`<div class="fe">${esc(w.en)}</div><div class="ft">${esc(w.tr)}</div>${w.ex?`<div class="fx">${esc(w.ex)}</div>`:""}`:`<div class="fe">${esc(w.en)}</div><div class="hint">Anlamını görmek için dokun</div>`}</div>
+    <div class="btnrow" style="justify-content:space-between"><button class="btn" data-act="fprev">‹ Önceki</button><span style="align-self:center">${i+1} / ${W.length}</span><button class="btn" data-act="fnext">Sonraki ›</button></div>
+    <div class="btnrow"><button class="btn" data-act="say" data-t="${esc(w.en+(w.ex?". "+w.ex:""))}">▶ Dinle</button><button class="btn chk" data-act="learn" data-k="${w.k}" aria-pressed="${!!store.learned[w.k]}">${store.learned[w.k]?"✓ Öğrendim":"Öğrendim olarak işaretle"}</button></div>`;}
+  if(wordMode==="quiz"){const pool=shuffle(W.slice()).slice(0,Math.min(8,W.length));
+    const qs=pool.map(w=>{const others=shuffle([...new Set(W.filter(x=>x.tr!==w.tr).map(x=>x.tr))]).slice(0,2);return[`‘${w.en}’ ne demek?`,[w.tr,...others],0];});
+    return head+`<div class="panel" id="wq"><h3>Kelime testi</h3><p class="m">Ünitedeki ve senin eklediğin kelimelerden rastgele ${qs.length} soru.</p>${qHTML(qs,"wq"+u.n)}<div class="btnrow"><button class="btn pri" data-act="checkwq">Kontrol et</button><button class="btn" data-act="retab">Yeni sorular</button></div><div id="wqres"></div></div>`;}
+  const form=`<details class="panel"${mine?"":" open"}><summary>Kendi kelimeni ekle</summary>
+   <form id="addw" data-n="${u.n}" autocomplete="off" style="margin-top:12px">
+   <label class="fl" for="aw-en">İngilizce kelime veya kalıp</label><input class="inp" id="aw-en" maxlength="60" placeholder="ör. look forward to" autocapitalize="none" spellcheck="false">
+   <label class="fl" for="aw-tr">Türkçe anlamı</label><input class="inp" id="aw-tr" maxlength="80" placeholder="ör. dört gözle beklemek">
+   <label class="fl" for="aw-ex">Örnek cümle (isteğe bağlı)</label><input class="inp" id="aw-ex" maxlength="160" placeholder="ör. I’m looking forward to the holiday.">
+   <div class="btnrow"><button class="btn pri" type="submit">Ekle</button></div></form></details>`;
+  return head+form+`<div class="panel"><ul class="wlist">${W.map(w=>`<li class="w ${store.learned[w.k]?"done":""}"><div><div class="en">${esc(w.en)} ${w.mine?`<span class="mine">benim</span>`:""}</div><div class="trn">${esc(w.tr)}</div></div><div class="wbtns"><button class="icon" data-act="say" data-t="${esc(w.en+(w.ex?". "+w.ex:""))}" aria-label="Dinle">▶</button><button class="icon chk" data-act="learn" data-k="${w.k}" aria-pressed="${!!store.learned[w.k]}" aria-label="Öğrendim">✓</button>${w.mine?`<button class="icon" data-act="delw" data-n="${u.n}" data-id="${w.id}" aria-label="Sil">🗑</button>`:""}</div>${w.ex?`<div class="ex">${esc(w.ex)}</div>`:""}</li>`).join("")}</ul></div>`;
+}
+function listening(text,qs,key,title){
+  const dlg=/^[A-Z][A-Za-z ]{0,14}:/m.test(text);const last=store.lis[key];
+  return `<div class="panel"><h3>${esc(title||"Dinleme")}</h3><p style="color:var(--muted)">Önce soruları oku, sonra metni görmeden dinle. Gerekirse hızı düşür.${last!=null?` Son sonucun: %${Math.round(last*100)}.`:""}</p>
+  <div class="player"><button class="btn pri" data-act="play" data-k="${key}">▶ Dinle</button><button class="btn" data-act="stop">■ Durdur</button>
+  <div class="speed" role="group" aria-label="Hız">${[[0.7,"Yavaş"],[0.9,"Normal"],[1.05,"Hızlı"]].map(s=>`<button data-act="rate" data-v="${s[0]}" aria-pressed="${rate===s[0]}">${s[1]}</button>`).join("")}</div></div>
+  <textarea hidden id="src-${key}" data-dlg="${dlg}">${esc(text)}</textarea>
+  <div class="lq" id="lq-${key}">${qHTML(qs,key)}</div>
+  <div class="btnrow"><button class="btn pri" data-act="checkl" data-k="${key}">Kontrol et</button><button class="btn" data-act="script" data-k="${key}">Metni göster</button></div><div id="lr-${key}"></div><div class="script" id="sc-${key}" hidden>${esc(text)}</div></div>`;
+}
+function writing(task,tips,model,key){
+  const v=store.text[key]||"";
+  return `<div class="panel"><h3>Yazma görevi</h3><p>${esc(task)}</p>${tips?`<ul class="tips">${tips.map(t=>`<li>${esc(t)}</li>`).join("")}</ul>`:""}
+  <label for="ta-${key}" style="display:block;margin:12px 0 6px;font-weight:700">Senin metnin</label><textarea id="ta-${key}" data-k="${key}" placeholder="Buraya İngilizce yaz…">${esc(v)}</textarea><div class="wc" id="wc-${key}">${wc(v)} kelime, otomatik kaydedilir</div>
+  <details style="margin-top:12px"><summary>Örnek cevabı göster</summary><div class="model">${esc(model)}</div></details></div>`;
+}
+function exam(k){
+  const e=EX[k];setBar(e.t,"home");let n=0;
+  const body=e.secs.map((s,si)=>{let h=`<div class="panel"><h3>Bölüm ${si+1}: ${esc(s.t)}</h3>`;
+    if(s.text)h+=`<div class="script" style="margin-top:0">${esc(s.text)}</div>`;
+    if(s.audio){const dlg=/^[A-Z][A-Za-z ]{0,14}:/m.test(s.audio);h+=`<div class="player"><button class="btn pri" data-act="play" data-k="ex-${k}-${si}">▶ Dinle</button><button class="btn" data-act="stop">■ Durdur</button></div><textarea hidden id="src-ex-${k}-${si}" data-dlg="${dlg}">${esc(s.audio)}</textarea><p style="color:var(--muted);font-size:.9rem;margin-top:8px">En fazla iki kez dinle.</p>`;}
+    h+=qHTML(s.qs,"ex"+k,n)+`</div>`;n+=s.qs.length;return h;}).join("");
+  return `<section class="hero" style="padding-bottom:0"><h1>${esc(e.t)}</h1><p class="lead">${esc(e.scope)}. ${n} çoktan seçmeli soru + yazma. Önerilen süre ${e.min} dakika. Yazma bölümü otomatik puanlanmaz; örnek cevapla karşılaştır ya da öğretmenine göster.${store.exam[k]!=null?` Son puanın: %${store.exam[k]}.`:""}</p></section>
+  <div class="examtop"><span class="timer" id="et" style="font-size:1.6rem">${e.min}:00</span><button class="btn" data-act="etimer" data-v="${e.min}">Süreyi başlat</button></div>
+  <div id="exam">${body}</div>
+  ${writing(e.wri.task,null,e.wri.m,"ex-"+k).replace("<h3>Yazma görevi</h3>",`<h3>Bölüm ${e.secs.length+1}: Yazma</h3>`)}
+  <div class="btnrow"><button class="btn pri" data-act="checkexam" data-k="${k}">Sınavı bitir ve puanla</button><button class="btn" data-act="reexam">Yeniden çöz</button></div><div id="eres"></div>`;
+}
+
+/* ===================== ROUTER ===================== */
+function route(){
+  stopSpeak();clearInterval(timerId);clearInterval(examTimer);
+  let h=(location.hash||"#home").slice(1);let html;
+  if(!store)h="login";else if(h==="login")h="dashboard";
+  const m=h.match(/^unit-(\d{1,2})$/);
+  if(m&&U[+m[1]-1]){if(lastUnit!==h){fIdx=0;fFlip=false;wordMode="list";uTab="ozet";}if(pendingTab){uTab=pendingTab;pendingTab=null;}lastUnit=h;html=unit(+m[1]);}
+  else{lastUnit=null;
+    if(h==="login")html=login();
+    else if(EX[h])html=exam(h);
+    else if(h==="contents")html=contents();
+    else if(h==="dashboard")html=dashboard();
+    else if(h==="profile")html=profile();
+    else html=home();}
+  $("#app").innerHTML=html;window.scrollTo(0,0);
+}
+window.addEventListener("hashchange",route);
+function rerenderTab(){const n=+location.hash.match(/unit-(\d+)/)[1];$("#tabc").innerHTML=tabContent(U[n-1]);
+  document.querySelectorAll(".tab").forEach(t=>t.setAttribute("aria-selected",t.dataset.v===uTab));}
+function armed(b,fn){if(b.dataset.armed){fn();return;}const o=b.textContent;b.dataset.armed="1";b.textContent="Emin misin? Tekrar dokun";setTimeout(()=>{if(b.isConnected){delete b.dataset.armed;b.textContent=o;}},4000);}
+
+document.addEventListener("submit",e=>{if(e.target.id==="loginf"){e.preventDefault();doLogin($("#uname").value);}
+  else if(e.target.id==="addw"){e.preventDefault();const n=+e.target.dataset.n,en=$("#aw-en").value.trim(),tr=$("#aw-tr").value.trim(),ex=$("#aw-ex").value.trim();
+    if(!en||!tr){toast("İngilizce kelimeyi ve Türkçe anlamını yazmalısın.");return;}
+    const u=U[n-1];if(allWords(u).some(w=>w.en.toLocaleLowerCase("en")===en.toLocaleLowerCase("en"))){toast("Bu kelime bu ünitede zaten var.");return;}
+    (store.custom[n]=store.custom[n]||[]).push({id:Date.now().toString(36),en,tr,ex});logAct("add",`Ünite ${n}: “${en}” eklendi`,null);
+    toast("Kelime eklendi.");rerenderTab();setTimeout(()=>{const i=$("#aw-en");if(i)i.focus();},0);}});
+document.addEventListener("click",e=>{
+  const b=e.target.closest("[data-act]");if(!b)return;const a=b.dataset.act;
+  const curU=()=>U[+location.hash.match(/unit-(\d+)/)[1]-1];
+  if(a==="pick")enter(b.dataset.v);
+  else if(a==="tab"){uTab=b.dataset.v;stopSpeak();clearInterval(timerId);rerenderTab();b.scrollIntoView({inline:"center",block:"nearest"});}
+  else if(a==="goto"){if(b.dataset.u){const h="#unit-"+b.dataset.u;if(location.hash===h){uTab=b.dataset.v;route();}else{pendingTab=b.dataset.v;location.hash=h;}}else location.hash="#"+b.dataset.v;}
+  else if(a==="say")speak(b.dataset.t,false);
+  else if(a==="stop")stopSpeak();
+  else if(a==="play"){const s=document.getElementById("src-"+b.dataset.k);speak(s.value,s.dataset.dlg==="true");}
+  else if(a==="rate"){rate=+b.dataset.v;b.parentNode.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));}
+  else if(a==="script"){const s=document.getElementById("sc-"+b.dataset.k);s.hidden=!s.hidden;b.textContent=s.hidden?"Metni göster":"Metni gizle";}
+  else if(a==="checkl"){const k=b.dataset.k;const r=grade(document.getElementById("lq-"+k));store.lis[k]=r.c/r.t;logAct("lis",`Ünite ${k.slice(3)} listening`,`${r.c}/${r.t}`);
+    document.getElementById("lr-"+k).innerHTML=`<div class="result">${r.c}/${r.t} doğru</div>`;b.disabled=true;}
+  else if(a==="wmode"){wordMode=b.dataset.v;fFlip=false;rerenderTab();}
+  else if(a==="flip"){fFlip=!fFlip;rerenderTab();}
+  else if(a==="fnext"){const u=curU();fIdx=(fIdx+1)%allWords(u).length;fFlip=false;rerenderTab();}
+  else if(a==="fprev"){const u=curU();fIdx=(fIdx-1+allWords(u).length)%allWords(u).length;fFlip=false;rerenderTab();}
+  else if(a==="learn"){const k=b.dataset.k;if(store.learned[k])delete store.learned[k];else{store.learned[k]=dkey();bump();
+      const g=me().goal;if(wordsToday()===g)toast(`Günlük hedefine ulaştın: ${g} kelime! 🎉`);}save();rerenderTab();}
+  else if(a==="delw")armed(b,()=>{const n=+b.dataset.n,id=b.dataset.id;store.custom[n]=(store.custom[n]||[]).filter(w=>w.id!==id);delete store.learned["c"+n+"-"+id];save();toast("Kelime silindi.");rerenderTab();});
+  else if(a==="checkwq"){const u=curU();const r=grade($("#wq"));logAct("wq",`Ünite ${u.n} kelime testi`,`${r.c}/${r.t}`);$("#wqres").innerHTML=`<div class="result">${r.c}/${r.t} doğru</div>`;b.disabled=true;}
+  else if(a==="checkquiz"){const u=curU();const r=grade($("#quiz"));store.quiz[u.n]=r.c;logAct("quiz",`Ünite ${u.n} testi`,`${r.c}/${r.t}`);$("#qres").innerHTML=`<div class="result">${r.c}/${r.t} doğru</div><p>${verdict(r.c/r.t*100)}</p>`;b.disabled=true;}
+  else if(a==="retab"){rerenderTab();}
+  else if(a==="timer"){clearInterval(timerId);let s=60;const el=$("#tm");el.textContent="1:00";b.textContent="Yeniden başlat";
+    timerId=setInterval(()=>{s--;el.textContent=`0:${String(Math.max(s,0)).padStart(2,"0")}`;if(s<=0){clearInterval(timerId);el.textContent="Süre doldu";}},1000);}
+  else if(a==="etimer"){clearInterval(examTimer);let s=+b.dataset.v*60;const el=$("#et");b.textContent="Yeniden başlat";
+    examTimer=setInterval(()=>{s--;const m=Math.floor(Math.max(s,0)/60),ss=Math.max(s,0)%60;el.textContent=`${m}:${String(ss).padStart(2,"0")}`;if(s<=0){clearInterval(examTimer);el.textContent="Süre doldu";}},1000);}
+  else if(a==="checkexam"){const k=b.dataset.k;const r=grade($("#exam"));const p=Math.round(r.c/r.t*100);store.exam[k]=p;logAct("exam",EX[k].t,`%${p}`);clearInterval(examTimer);stopSpeak();
+    $("#eres").innerHTML=`<div class="panel"><div class="result">${r.c}/${r.t} doğru (%${p})</div><p>${verdict(p)}${r.empty?` Boş bıraktığın soru: ${r.empty}.`:""}</p><p style="color:var(--muted)">Yeşil işaretli seçenekler doğru cevaplardır. Sonuç Dashboard’a kaydedildi.</p><a class="btn" href="#dashboard">Dashboard’a git</a></div>`;
+    b.disabled=true;$("#eres").scrollIntoView({behavior:"smooth",block:"start"});}
+  else if(a==="reexam")route();
+  else if(a==="avatar"){me().avatar=b.dataset.v;save();route();}
+  else if(a==="goal"){me().goal=+b.dataset.v;save();route();}
+  else if(a==="logout"){DB.current=null;bind();save();location.hash="#login";route();}
+  else if(a==="reset")armed(b,()=>{me().data=blank();bind();save();toast("İlerleme sıfırlandı.");route();});
+  else if(a==="delete")armed(b,()=>{delete DB.users[DB.current];DB.current=null;bind();save();toast("Profil silindi.");location.hash="#login";route();});
+});
+document.addEventListener("keydown",e=>{if((e.key==="Enter"||e.key===" ")&&e.target.dataset&&e.target.dataset.act==="flip"){e.preventDefault();e.target.click();}});
+document.addEventListener("change",e=>{if(e.target.id==="examdate"){me().examDate=e.target.value;save();toast("Sınav tarihi kaydedildi.");}});
+document.addEventListener("input",e=>{const t=e.target;if(t.tagName==="TEXTAREA"&&t.dataset.k&&store){const k=t.dataset.k;store.text[k]=t.value;
+  const n=wc(t.value),dk=k+"@"+dkey();
+  if(n>=20&&!store.wlog[dk]){store.wlog[dk]=1;const lbl=k.startsWith("u")?`Ünite ${k.slice(1)} writing`:`${EX[k.slice(3)].t} yazma`;logAct("write",lbl,null);}else save();
+  const w=document.getElementById("wc-"+k);if(w)w.textContent=n+" kelime, otomatik kaydedilir";}});
+route();
+</script>
+<script>if("serviceWorker" in navigator){window.addEventListener("load",()=>{navigator.serviceWorker.register("sw.js").catch(()=>{});});}</script>
+</body>
+</html>
