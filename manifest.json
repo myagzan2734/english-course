@@ -1,7 +1,7 @@
 {
-  "name": "Pre-Intermediate Çalışma Defteri",
+  "name": "Speakout Çalışma Defteri",
   "short_name": "Çalışma Defteri",
-  "description": "Speakout Pre-Intermediate ünitelerine göre kelime, dilbilgisi, dinleme, konuşma, yazma ve sınav çalışması.",
+  "description": "Speakout 2nd Edition ünitelerine göre kelime, dilbilgisi, dinleme, konuşma, yazma ve sınav çalışması.",
   "lang": "tr",
   "start_url": "./",
   "scope": "./",
