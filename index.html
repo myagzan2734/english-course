@@ -225,6 +225,56 @@ h4{font-family:var(--head);font-size:1rem;margin:16px 0 6px}
 .techs{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px;margin-top:10px}
 .tech .ic{font-size:1.6rem}
 @media(max-width:520px){.xr{grid-template-columns:1fr}.xr .ex{grid-column:1}.cmp{grid-template-columns:1fr}}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;flex-wrap:wrap}
+.seg button{border:0;background:var(--card);padding:8px 14px;cursor:pointer;font-weight:700;color:var(--ink)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.seg button:disabled{opacity:.4;cursor:not-allowed}
+.mrow{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;margin:8px 0}
+.mlab{font-family:var(--head);font-weight:700;min-width:7.5em;color:var(--muted);font-size:.9rem}
+.chip i{font-style:normal;font-size:.75rem;color:var(--muted);margin-left:2px}
+.chip[aria-pressed="true"] i{color:inherit;opacity:.8}
+.chip:disabled{opacity:.4;cursor:not-allowed}
+:root{--k1:#0F7570;--k1s:#DFF1EF;--k2:#B4413A;--k2s:#FBE6E3;--k3:#3949AB;--k3s:#E6E9F8;--k4:#8A5D00;--k4s:#FFF1C7;--k5:#7B3FA0;--k5s:#F1E6F8;--k6:#2E7D32;--k6s:#E3F2E4}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--k1:#4CC2BA;--k1s:#14333A;--k2:#F0857A;--k2s:#3A1D23;--k3:#A7B1FF;--k3s:#232B57;--k4:#F2C14E;--k4s:#3A3014;--k5:#D7A6F2;--k5s:#2F2140;--k6:#86CF8A;--k6s:#1B3320}}
+:root[data-theme="dark"]{--k1:#4CC2BA;--k1s:#14333A;--k2:#F0857A;--k2s:#3A1D23;--k3:#A7B1FF;--k3s:#232B57;--k4:#F2C14E;--k4s:#3A3014;--k5:#D7A6F2;--k5s:#2F2140;--k6:#86CF8A;--k6s:#1B3320}
+.k-subj{--kc:var(--k1);--ks:var(--k1s)}.k-aux{--kc:var(--k2);--ks:var(--k2s)}.k-verb{--kc:var(--k3);--ks:var(--k3s)}.k-obj{--kc:var(--k4);--ks:var(--k4s)}.k-time{--kc:var(--k5);--ks:var(--k5s)}.k-place{--kc:var(--k6);--ks:var(--k6s)}.k-wh{--kc:var(--ink);--ks:var(--line)}
+.mout{border:2px solid var(--ink)}
+.msent{font-family:var(--head);font-weight:700;font-size:clamp(1.3rem,4.5vw,1.85rem);line-height:1.5}
+.tk[class*="k-"]{color:var(--kc);border-bottom:3px solid var(--kc);padding:0 1px}
+.mtr{margin-top:8px;font-size:1.1rem;display:flex;gap:8px;align-items:baseline}
+.flag{font-family:var(--head);font-weight:800;font-size:.72rem;background:var(--ink);color:var(--paper);border-radius:5px;padding:2px 6px}
+.mtarget{font-family:var(--head);font-weight:700;font-size:1.4rem;margin-top:4px;background:var(--hl);color:var(--hl-ink);border-radius:10px;padding:10px 14px;display:inline-block}
+.mform{display:flex;flex-wrap:wrap;align-items:center;gap:4px;margin-top:12px}
+.fchip{font-size:.8rem;font-weight:700;background:var(--ks);color:var(--kc);border-radius:6px;padding:3px 8px}
+.fplus{color:var(--muted);font-weight:800;font-size:.8rem}
+.msa{margin-top:10px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.msa span{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:3px 10px}
+.mnotes{list-style:none;padding:0;margin:8px 0 0}
+.mnotes li{padding:6px 0;border-top:1px dashed var(--line);font-size:.95rem}
+.mres{margin-top:12px;padding:10px 12px;border-radius:10px;font-weight:700}
+.mres.ok{background:var(--teal-soft);color:var(--teal)}.mres.bad{background:var(--coral-soft);color:var(--coral)}
+.mgrid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;margin:12px 0}
+.mcol{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:8px;min-width:0}
+.mhd{font-family:var(--head);font-weight:800;font-size:.85rem;color:var(--kc);background:var(--ks);border-radius:8px;padding:6px 8px;margin-bottom:8px;display:flex;gap:6px;align-items:center}
+.mn{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--kc);color:var(--card);font-size:.72rem}
+.mlist{display:flex;flex-direction:column;gap:6px}
+.mchip{border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:10px;padding:7px 8px;cursor:pointer;text-align:left;display:flex;flex-direction:column;gap:1px;min-width:0}
+.mchip b{font-size:.92rem;overflow-wrap:anywhere}.mchip small{font-size:.74rem;color:var(--muted);overflow-wrap:anywhere}
+.mcol .mchip[aria-pressed="true"]{border:2px solid var(--kc);background:var(--ks)}
+.mcol:nth-child(1){--kc:var(--k1);--ks:var(--k1s)}.mcol:nth-child(2){--kc:var(--k2);--ks:var(--k2s)}.mcol:nth-child(3){--kc:var(--k3);--ks:var(--k3s)}.mcol:nth-child(4){--kc:var(--k4);--ks:var(--k4s)}.mcol:nth-child(5){--kc:var(--k5);--ks:var(--k5s)}.mcol:nth-child(6){--kc:var(--k6);--ks:var(--k6s)}
+.mchip:disabled{opacity:.35;cursor:not-allowed}
+.mauto{border:2px dashed var(--kc);border-radius:10px;padding:10px 8px;display:flex;flex-direction:column;gap:4px}
+.mauto b{color:var(--kc);font-size:1rem}.mauto small{font-size:.74rem;color:var(--muted)}
+.mbar{position:sticky;bottom:calc(env(safe-area-inset-bottom,0px) + 8px);z-index:3;background:var(--card);border:2px solid var(--ink);border-radius:12px;padding:8px 10px 8px 14px;display:flex;align-items:center;gap:10px;font-family:var(--head);font-weight:700;box-shadow:0 6px 18px rgba(0,0,0,.12)}
+.mbar>span{flex:1;min-width:0}
+.mcount{display:flex;flex-direction:column;gap:2px}
+.mcount .big{font-family:var(--head);font-weight:800;font-size:2rem;color:var(--teal)}
+.mtbl{width:100%;border-collapse:collapse;min-width:560px}
+.mtbl th,.mtbl td{text-align:left;padding:8px 6px;border-top:1px solid var(--line);font-size:.93rem;vertical-align:top}
+.mtbl th{border-top:0;color:var(--muted);font-family:var(--head)}
+.mtbl tr.cur td{background:var(--ks,var(--teal-soft));background:var(--teal-soft)}
+.mtbl .icon{width:30px;height:30px;font-size:.8rem}
+@media(max-width:760px){.mgrid{grid-template-columns:1fr}.mlist{flex-direction:row;flex-wrap:wrap}.mchip{flex:0 0 auto}.mlab{min-width:0;width:100%}}
 details summary{cursor:pointer;font-weight:700;color:var(--teal)}
 @media (prefers-reduced-motion:no-preference){.flash{transition:transform .15s}.flash:active{transform:scale(.98)}}
 </style>
@@ -1136,6 +1186,174 @@ function zContent(){
   }}
 function rerenderZ(){$("#zc").innerHTML=zContent();document.querySelectorAll(".tab").forEach(t=>t.setAttribute("aria-selected",t.dataset.v===zTab));}
 
+/* ===================== SENTENCE MACHINE ===================== */
+const MS=[{en:"I",tr:"Ben",p:"1s",ans:"you"},{en:"You",tr:"Sen",p:"2s",ans:"I"},{en:"He",tr:"O",p:"3s",ans:"he"},{en:"She",tr:"O",p:"3s",ans:"she"},{en:"We",tr:"Biz",p:"1p",ans:"we"},{en:"They",tr:"Onlar",p:"3p",ans:"they"},{en:"My friend",tr:"Arkadaşım",p:"3s",ans:"he / she",noun:true}];
+const MV=[
+{en:["speak","speaks","speaking","spoke","spoken"],irr:1,tr:{stem:"konuş",aor:"konuşur"},o:[["English","İngilizce"],["Turkish","Türkçe"],["Spanish","İspanyolca"]]},
+{en:["learn","learns","learning","learned","learned"],tr:{stem:"öğren",aor:"öğrenir"},o:[["English","İngilizce"],["new words","yeni kelimeler"],["the guitar","gitar"]]},
+{en:["study","studies","studying","studied","studied"],tr:{stem:"çalış",aor:"çalışır"},o:[["maths","matematik"],["history","tarih"],["grammar","dilbilgisi"]]},
+{en:["read","reads","reading","read","read"],irr:1,tr:{stem:"oku",aor:"okur"},o:[["a book","kitap"],["the news","haberleri"],["a magazine","dergi"]]},
+{en:["write","writes","writing","wrote","written"],irr:1,tr:{stem:"yaz",aor:"yazar"},o:[["an email","e-posta"],["a letter","mektup"],["a story","hikâye"]]},
+{en:["watch","watches","watching","watched","watched"],tr:{stem:"izle",aor:"izler"},o:[["a film","film"],["TV","televizyon"],["the match","maçı"]]},
+{en:["drink","drinks","drinking","drank","drunk"],irr:1,tr:{stem:"iç",aor:"içer"},o:[["coffee","kahve"],["tea","çay"],["water","su"]]},
+{en:["eat","eats","eating","ate","eaten"],irr:1,tr:{stem:"ye",soft:"yi",aor:"yer"},o:[["fruit","meyve"],["fish","balık"],["pizza","pizza"]]},
+{en:["play","plays","playing","played","played"],tr:{stem:"oyna",aor:"oynar"},o:[["football","futbol"],["tennis","tenis"],["chess","satranç"]]},
+{en:["cook","cooks","cooking","cooked","cooked"],tr:{stem:"pişir",aor:"pişirir"},o:[["dinner","akşam yemeği"],["pasta","makarna"],["rice","pilav"]]},
+{en:["visit","visits","visiting","visited","visited"],tr:{pre:"ziyaret ",stem:"et",soft:"ed",aor:"eder"},o:[["my family","ailemi"],["my friends","arkadaşlarımı"],["London","Londra’yı"]]},
+{en:["listen to","listens to","listening to","listened to","listened to"],tr:{stem:"dinle",aor:"dinler"},o:[["music","müzik"],["podcasts","podcast"],["the radio","radyo"]]}];
+const MM=[{k:"can",neg:"can’t",full:"cannot",tr:"yetenek, olasılık"},{k:"should",neg:"shouldn’t",full:"should not",tr:"tavsiye"},{k:"must",neg:"mustn’t",full:"must not",tr:"zorunluluk"},{k:"will",neg:"won’t",full:"will not",tr:"gelecek, söz"},{k:"might",neg:"might not",full:"might not",tr:"belki"}];
+const MF=[{id:"modal",n:"Modal fiiller",lv:"A1–B1",d:"can, should, must, will, might + V1"},{id:"ps",n:"Present Simple",lv:"A1",d:"Rutinler ve genel gerçekler"},{id:"pc",n:"Present Continuous",lv:"A1",d:"Şu anda olan eylemler"},{id:"pas",n:"Past Simple",lv:"A1–A2",d:"Bitmiş geçmiş"},{id:"pac",n:"Past Continuous",lv:"A2",d:"Geçmişte devam eden eylem"},{id:"pp",n:"Present Perfect",lv:"A2–B1",d:"Deneyim ve yakın geçmiş"},{id:"will",n:"Future: will",lv:"A2",d:"Tahmin ve anlık karar"},{id:"going",n:"Future: going to",lv:"A1–A2",d:"Plan ve niyet"}];
+const NO={none:1,en:"",tr:""};
+const MT={
+modal:[NO,{en:"today",tr:"bugün"},{en:"tomorrow",tr:"yarın"},{en:"every day",tr:"her gün"},{en:"this weekend",tr:"bu hafta sonu"},{en:"next week",tr:"gelecek hafta"}],
+ps:[NO,{en:"every day",tr:"her gün"},{en:"on Mondays",tr:"pazartesileri"},{en:"at the weekend",tr:"hafta sonları"},{en:"twice a week",tr:"haftada iki kez"},{en:"in the evening",tr:"akşamları"}],
+pc:[NO,{en:"now",tr:"şimdi"},{en:"at the moment",tr:"şu anda"},{en:"today",tr:"bugün"},{en:"this week",tr:"bu hafta"}],
+pas:[NO,{en:"yesterday",tr:"dün"},{en:"last week",tr:"geçen hafta"},{en:"two days ago",tr:"iki gün önce"},{en:"last summer",tr:"geçen yaz"},{en:"in 2020",tr:"2020’de"}],
+pac:[NO,{en:"at 8 p.m. yesterday",tr:"dün akşam saat sekizde"},{en:"when you called",tr:"sen aradığında"},{en:"all evening",tr:"bütün akşam"},{en:"at that time",tr:"o sırada"}],
+pp:[NO,{en:"before",tr:"daha önce"},{en:"this week",tr:"bu hafta"},{en:"recently",tr:"son zamanlarda"},{en:"just",tr:"az önce",mid:1,ty:["+"]},{en:"already",tr:"zaten",mid:1,ty:["+"]},{en:"ever",tr:"hiç",mid:1,ty:["?"]},{en:"yet",tr:"henüz",trq:"",ty:["-","?"]}],
+will:[NO,{en:"tomorrow",tr:"yarın"},{en:"next week",tr:"gelecek hafta"},{en:"one day",tr:"bir gün"},{en:"in the future",tr:"gelecekte"}],
+going:[NO,{en:"tomorrow",tr:"yarın"},{en:"this weekend",tr:"bu hafta sonu"},{en:"next month",tr:"gelecek ay"},{en:"after work",tr:"işten sonra"}]};
+const MP=[NO,{en:"at home",tr:"evde"},{en:"at work",tr:"işte"},{en:"at school",tr:"okulda"},{en:"in the park",tr:"parkta"},{en:"in London",tr:"Londra’da"}];
+const MWH=[{k:"where",en:"Where",tr:"nerede",drop:"p"},{k:"when",en:"When",tr:"ne zaman",drop:"t"},{k:"why",en:"Why",tr:"neden"}];
+
+/* Turkish morphology */
+const TV="aeıioöuü";
+const lastV=w=>{for(let i=w.length-1;i>=0;i--)if(TV.includes(w[i]))return w[i];return "e";};
+const H2=w=>"aıou".includes(lastV(w))?"a":"e";
+const H4=w=>({a:"ı",ı:"ı",e:"i",i:"i",o:"u",u:"u",ö:"ü",ü:"ü"})[lastV(w)];
+const endV=w=>TV.includes(w[w.length-1]);
+function TF(t){const st=t.stem,so=t.soft||st,vs=endV(so)?so+"y":so,a=H2(st),I=a==="a"?"ı":"i";
+  return{prog:endV(st)?st.slice(0,-1)+H4(st.slice(0,-1))+"yor":so+H4(so)+"yor",negProg:st+"m"+H4(st)+"yor",
+  past:st+("çfhkpsşt".includes(st[st.length-1])?"t":"d")+H4(st),negPast:st+"m"+a+"d"+(a==="a"?"ı":"i"),
+  fut:vs+a+"c"+a+"k",negFut:st+"m"+a+"y"+a+"c"+a+"k",abil:vs+a+"bilir",cant:vs+a+"m"+a+"z",mightNeg:st+"m"+a+"y"+a+"bilir",
+  mali:st+"m"+a+"l"+I,negMali:st+"m"+a+"m"+a+"l"+I,inf:st+"m"+a+"k",aor:t.aor,negAor:st+"m"+a+"z"};}
+const soft=w=>w.endsWith("k")?w.slice(0,-1)+"ğ":w;
+function pA(W,p,z){const I=H4(W);
+  if(p==="1s")return z?W.slice(0,-1)+"m":(endV(W)?W+"y":soft(W))+I+"m";
+  if(p==="2s")return W+"s"+I+"n";
+  if(p==="1p")return z?W.slice(0,-1)+"y"+H4(W.slice(0,-1))+"z":(endV(W)?W+"y":soft(W))+I+"z";
+  if(p==="3p")return W+"l"+H2(W)+"r";return W;}
+function pB(W,p){return p==="1s"?W+"m":p==="2s"?W+"n":p==="1p"?W+"k":p==="3p"?W+"l"+H2(W)+"r":W;}
+function qA(W,p){if(p==="3p"){const w=pA(W,p);return w+" m"+H4(w);}const I=H4(W);return W+" m"+I+({"1s":"y"+I+"m","2s":"s"+I+"n","3s":"","1p":"y"+I+"z"})[p];}
+function qB(W,p){const w=pB(W,p);return w+" m"+H4(w);}
+function qPac(W,p){if(p==="3p")return pA(W,p)+" mıydı";const I=H4(W);return W+" m"+I+"yd"+I+({"1s":"m","2s":"n","3s":"","1p":"k"})[p];}
+
+/* builders */
+const mzWh=st=>st.ty==="?"&&st.wh?MWH.find(w=>w.k===st.wh):null;
+function enB(st){const S=MS[st.s],V=MV[st.v],O=V.o[st.o],T=MT[st.f][st.t],P=MP[st.p],p3=S.p==="3s",neg=st.ty==="-",q=st.ty==="?",con=st.con&&!S.noun;
+  const W=mzWh(st),dT=W&&W.drop==="t",dP=W&&W.drop==="p";
+  const be=S.p==="1s"?"am":p3?"is":"are",was=(S.p==="1s"||p3)?"was":"were",hv=p3?"has":"have";
+  const X=(t,j)=>({t,c:"aux",j});let lead=[],after=[],main;
+  const beNeg=()=>con?(S.p==="1s"?[X("’m",1),X("not")]:[X(be==="is"?"isn’t":"aren’t")]):(S.noun?[X("isn’t")]:[X(be),X("not")]);
+  const bePos=()=>con?[X(be==="am"?"’m":be==="is"?"’s":"’re",1)]:[X(be)];
+  switch(st.f){
+    case "modal":{const m=MM[st.a];main=V.en[0];if(q)lead=[X(m.k)];else if(neg)after=[X(con||S.noun?m.neg:m.full)];else after=m.k==="will"&&con?[X("’ll",1)]:[X(m.k)];break;}
+    case "ps":main=!neg&&!q&&p3?V.en[1]:V.en[0];if(q)lead=[X(p3?"does":"do")];if(neg)after=[X(st.con||S.noun?(p3?"doesn’t":"don’t"):(p3?"does not":"do not"))];break;
+    case "pc":main=V.en[2];if(q)lead=[X(be)];else after=neg?beNeg():bePos();break;
+    case "going":main=V.en[0];if(q){lead=[X(be)];after=[X("going to")];}else after=(neg?beNeg():bePos()).concat([X("going to")]);break;
+    case "pas":main=!neg&&!q?V.en[3]:V.en[0];if(q)lead=[X("did")];if(neg)after=[X(st.con||S.noun?"didn’t":"did not")];break;
+    case "pac":main=V.en[2];if(q)lead=[X(was)];else if(neg)after=[X(st.con||S.noun?was+"n’t":was+" not")];else after=[X(was)];break;
+    case "pp":main=V.en[4];if(q)lead=[X(hv)];else if(neg)after=[X(st.con||S.noun?hv+"n’t":hv+" not")];else after=con?[X(p3?"’s":"’ve",1)]:[X(hv)];break;
+    case "will":main=V.en[0];if(q)lead=[X("will")];else if(neg)after=[X(st.con||S.noun?"won’t":"will not")];else after=con?[X("’ll",1)]:[X("will")];break;}
+  const a=[];if(W)a.push({t:W.en,c:"wh"});a.push(...lead);a.push({t:a.length?(S.en==="I"?"I":S.en.toLowerCase()):S.en,c:"subj"});a.push(...after);
+  if(T.mid&&!dT)a.push({t:T.en,c:"time"});a.push({t:main,c:"verb"});a.push({t:O[0],c:"obj"});
+  if(!P.none&&!dP)a.push({t:P.en,c:"place"});if(!T.none&&!T.mid&&!dT)a.push({t:T.en,c:"time"});
+  a[0]=Object.assign({},a[0],{t:a[0].t.charAt(0).toUpperCase()+a[0].t.slice(1)});return a;}
+const enS=st=>enB(st).map((x,i)=>(i&&!x.j?" ":"")+x.t).join("")+(st.ty==="?"?"?":".");
+function trB(st){const S=MS[st.s],V=MV[st.v],O=V.o[st.o],T=MT[st.f][st.t],P=MP[st.p],p=S.p,F=TF(V.tr),neg=st.ty==="-";
+  const W=mzWh(st),q=st.ty==="?"&&!W,dT=W&&W.drop==="t",dP=W&&W.drop==="p";
+  const A=w=>q?qA(w,p):pA(w,p);const B=w=>q?qB(w,p):pB(w,p);let vp,belki=false;
+  switch(st.f){
+    case "modal":{const k=MM[st.a].k;
+      if(k==="can")vp=neg?pA(F.cant,p,true):A(F.abil);else if(k==="should")vp=A(neg?F.negMali:F.mali);
+      else if(k==="must")vp=neg?pA(F.negMali,p):A(F.inf+" zorunda");else if(k==="will")vp=A(neg?F.negFut:F.fut);
+      else{belki=true;vp=pA(neg?F.mightNeg:F.abil,p);}break;}
+    case "ps":vp=neg?pA(F.negAor,p,true):A(F.aor);break;
+    case "pc":vp=A(neg?F.negProg:F.prog);break;
+    case "pas":case "pp":vp=B(neg?F.negPast:F.past);break;
+    case "pac":vp=q?qPac(F.prog,p):pB((neg?F.negProg:F.prog)+"d"+H4(F.prog),p);break;
+    default:vp=A(neg?F.negFut:F.fut);}
+  const tm=T.none||dT?"":(st.ty==="?"&&T.trq!==undefined?T.trq:T.tr);
+  const parts=[S.tr];if(belki)parts.push("belki");if(tm)parts.push(tm);if(W)parts.push(W.tr);if(!P.none&&!dP)parts.push(P.tr);parts.push(O[1]);parts.push((V.tr.pre||"")+vp);
+  return parts.join(" ")+(st.ty==="?"?"?":".");}
+function shortAns(st){if(st.ty!=="?"||st.wh)return null;const S=MS[st.s],pr=S.ans,ap=pr==="I"?"1s":pr==="you"?"2s":pr==="we"?"1p":pr==="they"?"3p":"3s",p3=ap==="3s";
+  const be=ap==="1s"?"am":p3?"is":"are";let y,n;
+  switch(st.f){case "modal":y=MM[st.a].k;n=y==="must"?(p3?"doesn’t have to":"don’t have to"):MM[st.a].neg;break;case "ps":y=p3?"does":"do";n=y+"n’t";break;case "pc":case "going":y=be;n=be==="am"?"":be+"n’t";break;
+    case "pas":y="did";n="didn’t";break;case "pac":y=ap==="1s"||p3?"was":"were";n=y+"n’t";break;case "pp":y=p3?"has":"have";n=y+"n’t";break;default:y="will";n="won’t";}
+  return["Yes, "+pr+" "+y+".",n?"No, "+pr+" "+n+".":"No, I’m not."];}
+function mzNotes(st){const S=MS[st.s],V=MV[st.v],p3=S.p==="3s",ty=st.ty,T=MT[st.f][st.t],n=[];
+  switch(st.f){
+    case "modal":{const k=MM[st.a].k;n.push("Modal fiilden sonra fiil yalın (V1) gelir; -s ve to almaz: ✗ "+(p3?"He can speaks":"I can to speak")+".");
+      n.push({can:"can: yetenek ve olasılık. Olumsuzu can’t / cannot. Türkçede ‘-ebilmek’.",should:"should: tavsiye. Olumsuzu shouldn’t. Türkçede ‘-meli’.",must:"must: güçlü zorunluluk (‘-mek zorunda’). Dikkat: mustn’t YASAK anlamına gelir; ‘zorunda değilsin’ için don’t have to kullanılır.",will:"will: gelecek, tahmin ve söz. Kısaltması ’ll, olumsuzu won’t.",might:"might: ‘belki’ anlamında olasılık. Soru cümlesinde neredeyse hiç kullanılmadığı için soru seçeneği kapalı."}[k]);break;}
+    case "ps":n.push(ty==="+"?(p3?"He / she / it ile fiile -s eklenir: "+V.en[1]+".":"I / you / we / they ile fiil yalın kalır."):(p3?"He / she / it ile does / doesn’t kullanılır; -s yardımcı fiile geçtiği için fiil yalın kalır: ✗ doesn’t "+V.en[1]+".":"I / you / we / they ile do / don’t kullanılır."));n.push("Rutinler, alışkanlıklar ve genel gerçekler için. Türkçede geniş zaman (-ır / -ar) ile çevrilir.");break;
+    case "pc":n.push("be özneye göre değişir: I → am, he / she / it → is, you / we / they → are. Fiil -ing alır: "+V.en[2]+".");n.push("Şu anda olan ya da geçici eylemler için. Türkçede ‘-iyor’.");break;
+    case "pas":n.push(ty==="+"?(V.irr?V.en[0]+" düzensiz bir fiil; 2. hâli "+V.en[3]+".":"Düzenli fiile -ed eklendi: "+V.en[3]+"."):"did geçmişi gösterdiği için fiil yalın hâle döner: ✗ didn’t "+V.en[3]+".");n.push("Belirli bir zamanda bitmiş eylemler için. Türkçede ‘-dı’.");break;
+    case "pac":n.push("was / were + V-ing: I / he / she / it → was, you / we / they → were.");n.push("Geçmişte belli bir anda devam eden eylem; çoğu zaman past simple ile bölünür. Türkçede ‘-iyordu’.");break;
+    case "pp":n.push("have / has + V3 ("+V.en[4]+"). He / she / it ile has kullanılır.");if(T.mid)n.push(T.en+", have / has ile fiil arasına girer.");if(T.en==="yet")n.push("yet olumsuz ve soru cümlelerinde, cümle sonunda kullanılır. Türkçe soruda genelde çevrilmez.");n.push("Zamanı belirtilmeyen deneyimler ve sonucu şimdi önemli olan eylemler için. Türkçede çoğunlukla ‘-dı’ ile çevrilir.");break;
+    case "will":n.push("will tüm öznelerle aynıdır, fiil yalın gelir. Olumsuzu won’t.");n.push("Tahminler, anlık kararlar ve sözler için. Türkçede ‘-ecek’.");break;
+    case "going":n.push("be (am / is / are) + going to + V1. be özneye göre değişir.");n.push("Önceden verilmiş kararlar ve planlar için. Türkçede ‘-ecek’.");break;}
+  if(mzWh(st))n.push("Soru kelimesi en başa gelir, ardından yardımcı fiil gelir. Türkçede soru kelimesi varken ‘mı’ eki kullanılmaz.");
+  if(S.en==="You")n.push("you hem ‘sen’ hem ‘siz’ anlamına gelir.");if(S.en==="He"||S.en==="She")n.push("Türkçede he ve she ikisi de ‘o’ olur.");return n;}
+
+/* state & UI */
+let MZ={f:"modal",ty:"+",wh:"",con:true,s:0,a:0,v:0,o:0,t:0,p:0,mode:"free",tg:null,ok:0,tot:0,checked:false,hint:false,ans:false};
+const tOk=(st,i)=>{const T=MT[st.f][i];return !T.ty||T.ty.includes(st.ty);};
+function mzFix(st){if(st.f==="modal"&&MM[st.a].k==="might"&&st.ty==="?")st.ty="+";if(st.ty!=="?")st.wh="";if(st.f==="pp"&&st.wh==="when")st.wh="";
+  if(st.t>=MT[st.f].length||!tOk(st,st.t))st.t=0;if(st.o>=MV[st.v].o.length)st.o=0;if(st.f!=="modal")st.a=0;return st;}
+const rnd=n=>Math.floor(Math.random()*n);
+function mzRandom(st,keepType){st.s=rnd(MS.length);st.v=rnd(MV.length);st.o=rnd(3);st.p=rnd(MP.length);if(st.f==="modal")st.a=rnd(MM.length);
+  if(!keepType)st.ty=["+","-","?"][rnd(3)];st.wh="";mzFix(st);const ok=MT[st.f].map((x,i)=>i).filter(i=>tOk(st,i));st.t=ok[rnd(ok.length)];return st;}
+function mzNew(){MZ.tg=mzRandom(Object.assign({},MZ),false);MZ.ty=MZ.tg.ty;MZ.wh="";mzFix(MZ);MZ.checked=false;MZ.hint=false;MZ.ans=false;}
+function mzCount(f){let per=0;["+","-","?"].forEach(ty=>{const st={f,ty};const tc=MT[f].filter((x,i)=>tOk(st,i)).length;const ac=f==="modal"?(ty==="?"?4:5):1;per+=ac*tc;});return per*MS.length*MV.length*3*MP.length;}
+const tkHTML=a=>a.map((x,i)=>(i&&!x.j?" ":"")+`<span class="tk k-${x.c}">${esc(x.t)}</span>`).join("");
+function mzFormula(st){const lab={subj:"Özne",obj:"Nesne",place:"Yer",time:"Zaman",wh:"Soru kelimesi"};const neg=st.ty==="-",q=st.ty==="?",p3=MS[st.s].p==="3s";
+  const vl=st.f==="pc"||st.f==="pac"?"V-ing":st.f==="pp"?"V3":st.f==="pas"&&!neg&&!q?"V2":st.f==="ps"&&!neg&&!q&&p3?"V1 + s":"V1";
+  return enB(st).map(x=>`<span class="fchip k-${x.c}">${esc(x.c==="aux"?x.t.replace(/^’/,""):x.c==="verb"?vl:x.c==="time"&&MT[st.f][st.t].mid?x.t:lab[x.c])}</span>`).join('<span class="fplus">+</span>');}
+const mzChip=(k,i,label,sub,on,dis)=>`<button class="mchip" data-act="mz" data-k="${k}" data-v="${i}" aria-pressed="${on}" ${dis?"disabled":""}><b>${esc(label)}</b>${sub?`<small>${esc(sub)}</small>`:""}</button>`;
+function mzAuto(st){const t=enB(Object.assign({},st,{wh:""})).filter(x=>x.c==="aux").map(x=>x.t).join(" ");
+  return t||"— yardımcı fiil yok";}
+function mzBody(){const st=MZ,W=mzWh(st),test=st.mode==="test",S=MS[st.s],V=MV[st.v];
+  const fav=(DB.current&&me().fav)||[];
+  const ctrl=`<div class="panel"><div class="mrow"><span class="mlab">Mod</span><div class="seg"><button data-act="mzmode" data-v="free" aria-pressed="${!test}">Serbest</button><button data-act="mzmode" data-v="test" aria-pressed="${test}">Kendini test et</button></div>
+    <button class="btn" data-act="mzcon" aria-pressed="${st.con}" style="margin-left:auto">${st.con?"✓ Kısaltmalar açık":"Kısaltmalar kapalı"}</button></div>
+    <div class="mrow"><span class="mlab">Formül</span><div class="chips">${MF.map(f=>`<button class="chip fchipsel" data-act="mz" data-k="f" data-v="${f.id}" aria-pressed="${st.f===f.id}" title="${esc(f.d)}">${esc(f.n)} <i>${f.lv}</i></button>`).join("")}</div></div>
+    <p class="m" style="margin:2px 0 10px">${esc(MF.find(f=>f.id===st.f).d)}</p>
+    <div class="mrow"><span class="mlab">Cümle türü</span><div class="seg">${[["+","Olumlu (+)"],["-","Olumsuz (−)"],["?","Soru (?)"]].map(x=>`<button data-act="mz" data-k="ty" data-v="${x[0]}" aria-pressed="${st.ty===x[0]}" ${x[0]==="?"&&st.f==="modal"&&MM[st.a].k==="might"?"disabled":""}>${x[1]}</button>`).join("")}</div></div>
+    ${st.ty==="?"&&!test?`<div class="mrow"><span class="mlab">Soru kelimesi</span><div class="chips">${[{k:"",en:"Yok",tr:"evet / hayır sorusu"}].concat(MWH).map(w=>`<button class="chip" data-act="mz" data-k="wh" data-v="${w.k}" aria-pressed="${st.wh===w.k}" ${w.k==="when"&&st.f==="pp"?"disabled title=\"Present perfect ile when kullanılmaz\"":""}>${esc(w.en)} <i>${esc(w.tr)}</i></button>`).join("")}</div></div>`:""}</div>`;
+  let out;
+  if(!test){const sa=shortAns(st);
+    out=`<div class="panel mout"><div class="msent">${tkHTML(enB(st))}<span class="tk">${st.ty==="?"?"?":"."}</span></div>
+    <div class="mtr"><span class="flag">TR</span>${esc(trB(st))}</div>
+    <div class="mform">${mzFormula(st)}</div>
+    ${sa?`<div class="msa"><b>Kısa cevaplar:</b> ${sa.map(x=>`<span>${esc(x)}</span>`).join(" ")}</div>`:""}
+    <div class="btnrow"><button class="btn pri" data-act="mzsay">▶ Dinle</button><button class="btn" data-act="mzrand">🎲 Rastgele cümle</button>${DB.current?`<button class="btn" data-act="mzsave">★ Defterime ekle</button>`:""}</div>
+    <ul class="mnotes">${mzNotes(st).map(x=>`<li>💡 ${esc(x)}</li>`).join("")}</ul></div>`;}
+  else{const tg=st.tg,ok=st.checked&&trB(st)===trB(tg);
+    out=`<div class="panel mout"><div class="m">Bu cümleyi aşağıdaki makineyle İngilizce kur (${esc(MF.find(f=>f.id===st.f).n)}):</div>
+    <div class="mtarget">${esc(trB(tg))}</div>
+    <div class="m" style="margin-top:8px">Senin cümlen:</div><div class="msent" style="font-size:1.25rem">${tkHTML(enB(st))}<span class="tk">${st.ty==="?"?"?":"."}</span></div>
+    ${st.hint?`<div class="mform">${mzFormula(tg)}</div>`:""}
+    ${st.checked?`<div class="mres ${ok?"ok":"bad"}">${ok?"✓ Doğru! ":"✗ Henüz değil. "}${!ok&&st.ans?"Doğru cevap: <b>"+esc(enS(tg))+"</b>":""}${ok?"<b>"+esc(enS(st))+"</b>":""}</div>`:""}
+    <div class="btnrow"><button class="btn pri" data-act="mzcheck">Kontrol et</button><button class="btn" data-act="mzhint">İpucu: formül</button><button class="btn" data-act="mzans">Cevabı göster</button><button class="btn" data-act="mznew">Yeni cümle ›</button><span class="m" style="align-self:center">Skor: ${st.ok} / ${st.tot}</span></div></div>`;}
+  const dT=W&&W.drop==="t",dP=W&&W.drop==="p",F=TF(V.tr);
+  const mach=`<div class="mgrid">
+   <div class="mcol"><div class="mhd k-subj"><span class="mn">1</span>Kim?</div><div class="mlist">${MS.map((x,i)=>mzChip("s",i,x.en,x.tr,st.s===i)).join("")}</div></div>
+   <div class="mcol"><div class="mhd k-aux"><span class="mn">2</span>Yardımcı</div><div class="mlist">${st.f==="modal"?MM.map((x,i)=>mzChip("a",i,x.k,x.tr,st.a===i,st.ty==="?"&&x.k==="might")).join(""):`<div class="mauto"><b>${esc(mzAuto(st))}</b><small>Seçtiğin zamana ve özneye göre otomatik</small></div>`}</div></div>
+   <div class="mcol"><div class="mhd k-verb"><span class="mn">3</span>Fiil</div><div class="mlist">${MV.map((x,i)=>mzChip("v",i,x.en[0],(x.tr.pre||"")+TF(x.tr).inf,st.v===i)).join("")}</div></div>
+   <div class="mcol"><div class="mhd k-obj"><span class="mn">4</span>Ne? Kimi?</div><div class="mlist">${V.o.map((x,i)=>mzChip("o",i,x[0],x[1],st.o===i)).join("")}</div></div>
+   <div class="mcol"><div class="mhd k-time"><span class="mn">5</span>Ne zaman?</div><div class="mlist">${MT[st.f].map((x,i)=>mzChip("t",i,x.none?"—":x.en,x.none?"zaman yok":x.tr,st.t===i,dT||!tOk(st,i))).join("")}</div></div>
+   <div class="mcol"><div class="mhd k-place"><span class="mn">6</span>Nerede?</div><div class="mlist">${MP.map((x,i)=>mzChip("p",i,x.none?"—":x.en,x.none?"yer yok":x.tr,st.p===i,dP)).join("")}</div></div></div>`;
+  const ac=st.f==="modal"?"5 yardımcı":"1 yardımcı";const total=MF.reduce((a,f)=>a+mzCount(f.id),0);
+  const cnt=`<div class="panel mcount"><div><b>${MS.length} özne × ${ac} × ${MV.length} fiil × 3 nesne × ${MT[st.f].length} zaman × ${MP.length} yer × 3 cümle türü</b></div><div class="big">= ${mzCount(st.f).toLocaleString("tr-TR")} cümle</div><p class="m" style="margin:4px 0 0">Bu formülle kurabileceğin doğru cümle sayısı (geçersiz zaman–tür eşleşmeleri hariç). 8 formülün toplamı: <b>${total.toLocaleString("tr-TR")}</b> cümle, soru kelimeleri hariç.</p></div>`;
+  const rows=MF.map(f=>{const s2=mzFix(Object.assign({},st,{f:f.id,t:0,wh:"",a:f.id==="modal"?st.a:0}));return `<tr${f.id===st.f?' class="cur"':""}><td><b>${esc(f.n)}</b></td><td>${sayBtn(enS(s2))} ${esc(enS(s2))}</td><td>${esc(trB(s2))}</td></tr>`;}).join("");
+  const tbl=`<div class="panel"><h3>Aynı cümle 8 farklı formülde</h3><p class="m">Seçtiğin özne, fiil ve nesneyle, aynı cümle türünde (${st.ty==="+"?"olumlu":st.ty==="-"?"olumsuz":"soru"}). Zamanlar arasındaki farkı yan yana gör.</p><div style="overflow-x:auto"><table class="mtbl"><thead><tr><th>Formül</th><th>İngilizce</th><th>Türkçe</th></tr></thead><tbody>${rows}</tbody></table></div></div>`;
+  const favP=DB.current?`<div class="panel"><h3>Defterim (${fav.length})</h3>${fav.length?fav.map((x,i)=>`<div class="act"><span>${sayBtn(x.en)}</span><span><b>${esc(x.en)}</b><br><span class="m">${esc(x.tr)}</span></span><button class="icon" style="margin-left:auto" data-act="mzdel" data-v="${i}" aria-label="Sil">🗑</button></div>`).join(""):`<p class="m">Beğendiğin cümleleri ★ Defterime ekle ile buraya kaydet; sonra tekrar dinleyip çalışabilirsin.</p>`}</div>`:"";
+  const how=`<div class="panel"><h3>Nasıl kullanılır?</h3><ol class="tips"><li>Bir formül ve cümle türü seç (olumlu, olumsuz ya da soru).</li><li>Makinede her sütundan bir parça seç. Yardımcı fiil ve fiilin hâli otomatik değişir.</li><li>Renkli cümleyi incele: her renk bir sütunu gösterir. Kuralları oku, ▶ ile dinle ve sesli tekrar et.</li><li>‘Kendini test et’ moduyla Türkçe cümleleri İngilizceye çevir.</li></ol></div>`;
+  return ctrl+out+mach+`<div class="mbar"><span>${tkHTML(enB(st))}${st.ty==="?"?"?":"."}</span><button class="icon" data-act="mzsay" aria-label="Dinle">▶</button></div>`+cnt+tbl+favP+how;}
+function cumle(){setBar("Cümle makinesi",store?"home":"level");
+  return `<section class="hero" style="padding-bottom:0"><h1><span class="mark">Cümle</span> makinesi</h1><p class="lead">Her sütundan bir parça seç, doğru İngilizce cümleyi gör. Yardımcı fiil ve fiilin hâli seçtiğin zamana ve özneye göre kendiliğinden değişir; Türkçesi, formülü, kısa cevapları ve kuralı anında çıkar.</p></section><div id="mz">${mzBody()}</div>`;}
+function rmz(){const y=window.scrollY;$("#mz").innerHTML=mzBody();window.scrollTo(0,y);}
+
 /* ===================== LEVEL PICKER ===================== */
 let pickCefr=null,pickBook=null;
 function levelPage(){
@@ -1207,6 +1425,7 @@ function verdict(p){return p>=85?"Harika! Bu konular sağlam.":p>=70?"İyi gidiy
 function setBar(title,back){
   const p=DB.current&&me();
   $("#bar").innerHTML=(back?`<a class="back" href="#${back}">‹ Geri</a>`:"")+`<span class="ttl">${esc(title)}</span><span class="sp"></span>`+
+  (p?`<a class="hbtn" href="#cumle" aria-label="Cümle makinesi" title="Cümle makinesi">🧩</a>`:"")+
   (p?`<a class="hbtn" href="#zamanlar" aria-label="Zamanlar ve formüller" title="Zamanlar ve formüller">📖</a>`:"")+
   (p&&store?`<a class="hbtn" href="#dashboard" aria-label="Dashboard" title="Dashboard">📊</a><a class="hbtn" href="#profile" aria-label="Profil" title="Profil">${p.avatar}</a>`:"");
 }
@@ -1256,7 +1475,7 @@ function home(){
   return `<section class="hero"><h1><span class="mark">Speakout ${esc(curL().name)}</span><br>çalışma defteri</h1>
   <p class="lead">Merhaba ${esc(p.name)} ${p.avatar}. Kelimeler, dilbilgisi, kalıplar, dinleme, konuşma, yazma ve her ünite için bir test; en altta 2 ara sınav ve 2 final var.</p>
   <div class="stats"><div class="stat"><b>${learned}/${TOTALW}</b><span>öğrenilen kelime</span></div><div class="stat"><b>${tests}/12</b><span>bitirilen ünite testi</span></div><div class="stat"><b>${streak()} gün</b><span>çalışma serisi</span></div></div>
-  <div class="btnrow"><a class="btn pri" href="#dashboard">İlerlememi gör</a><a class="btn" href="#zamanlar">📖 Zamanlar ve formüller</a><a class="btn" href="#contents">Kitap içeriği</a><a class="btn" href="#level">Seviye değiştir</a></div></section>
+  <div class="btnrow"><a class="btn pri" href="#dashboard">İlerlememi gör</a><a class="btn" href="#cumle">🧩 Cümle makinesi</a><a class="btn" href="#zamanlar">📖 Zamanlar ve formüller</a><a class="btn" href="#contents">Kitap içeriği</a><a class="btn" href="#level">Seviye değiştir</a></div></section>
   <h2>Üniteler</h2><div class="units">${U.map(u=>{const p=Math.round(learnedCount(u)/allWords(u).length*100);const q=store.quiz[u.n];
    return `<a class="tile" href="#unit-${u.n}">${q!=null?`<span class="badge">${q}/6</span>`:""}<div class="num">${u.n}</div><div class="nm">${esc(u.t)}</div><div class="tr">${esc(u.tr)}</div><div class="prog" aria-label="Kelime ilerlemesi %${p}"><i style="width:${p}%"></i></div></a>`;}).join("")}</div>
   <h2>Sınavlar</h2><div class="exams">${Object.entries(EX).map(([k,e])=>`<a class="tile exam-t" href="#${k}">${store.exam[k]!=null?`<span class="badge">%${store.exam[k]}</span>`:""}<div class="nm">${esc(e.t)}</div><div class="tr">${esc(e.scope)}, ${e.min} dakika, okuma + dinleme + yazma</div></a>`).join("")}</div>
@@ -1290,6 +1509,7 @@ function dashboard(){
    ${left!=null?`<div class="kpi"><b>${left>0?left+" gün":left===0?"Bugün!":"Geçti"}</b><span>sınavına kalan</span></div>`:""}
   </div></section>
   ${ns?`<div class="panel next"><h3>Sıradaki adım</h3><p>${esc(ns[2])}</p><button class="btn pri" data-act="goto" data-u="${ns[0]?ns[0].n:""}" data-v="${ns[1]}">Başla</button></div>`:`<div class="panel next"><h3>Tebrikler!</h3><p>Bütün ünite ve sınavları tamamladın. Zayıf alanlarını tekrar etmeye devam et.</p></div>`}
+  <div class="panel"><h3>🧩 Cümle makinesi</h3><p class="m" style="margin-top:0">Her sütundan bir parça seçerek 8 farklı formülde yüz binlerce doğru cümle kur, Türkçesini ve kuralını gör, kendini test et.${me().mzok?` Test skorun: ${me().mzok} doğru.`:""}</p><a class="btn pri" href="#cumle">Makineyi aç</a></div>
   <div class="panel"><h3>Son 14 gün</h3><p class="m">Her çubuk o gün yaptığın etkinlik sayısı (öğrenilen kelime, test, dinleme, yazma, sınav). Sarı çubuk bugün.</p>${chart}</div>
   <div class="panel"><h3>Ünite ilerlemesi</h3><p class="m">Kelimeler %40, test %30, listening %15, writing %15 ağırlıkla hesaplanır.</p>
    ${U.map(u=>{const pc=unitPct(u),q=store.quiz[u.n],l=store.lis["lis"+u.n];return `<a class="urow" href="#unit-${u.n}"><span class="n">${u.n}</span><span><b>${esc(u.t)}</b><div class="meta">Kelime ${learnedCount(u)}/${allWords(u).length}, test ${q!=null?q+"/6":"–"}, listening ${l!=null?"%"+Math.round(l*100):"–"}, writing ${wc(store.text["u"+u.n]||"")>=50?"✓":"–"}</div><div class="prog"><i style="width:${pc}%"></i></div></span><span class="pct">%${pc}</span></a>`;}).join("")}</div>
@@ -1394,7 +1614,7 @@ function route(){
   let h=(location.hash||"#home").slice(1);let html;
   if(!DB.current)h="login";
   else if(h==="login")h=store?"dashboard":"level";
-  else if(!store&&h!=="level"&&h!=="zamanlar")h="level";
+  else if(!store&&h!=="level"&&h!=="zamanlar"&&h!=="cumle")h="level";
   if(h==="level"&&lastRoute!=="level"){pickCefr=me().cefr;pickBook=me().level;}
   lastRoute=h;
   const m=h.match(/^unit-(\d{1,2})$/);
@@ -1403,6 +1623,7 @@ function route(){
     if(h==="login")html=login();
     else if(h==="level")html=levelPage();
     else if(h==="zamanlar")html=zamanlar();
+    else if(h==="cumle")html=cumle();
     else if(EX[h])html=exam(h);
     else if(h==="contents")html=contents();
     else if(h==="dashboard")html=dashboard();
@@ -1425,6 +1646,19 @@ document.addEventListener("click",e=>{
   const b=e.target.closest("[data-act]");if(!b)return;const a=b.dataset.act;
   const curU=()=>U[+location.hash.match(/unit-(\d+)/)[1]-1];
   if(a==="pick")enter(b.dataset.v);
+  else if(a==="mz"){const k=b.dataset.k,v=b.dataset.v;MZ[k]=["s","a","v","o","t","p"].includes(k)?+v:v;if(k==="v")MZ.o=0;
+    if(k==="a"&&MZ.f==="modal"&&MM[MZ.a].k==="might"&&MZ.ty==="?"){toast("might soru cümlesinde neredeyse hiç kullanılmaz; olumluya geçildi.");}
+    mzFix(MZ);if(MZ.mode==="test"&&(k==="f"))mzNew();else if(MZ.mode==="test")MZ.checked=false;rmz();}
+  else if(a==="mzmode"){MZ.mode=b.dataset.v;if(MZ.mode==="test")mzNew();rmz();}
+  else if(a==="mzcon"){MZ.con=!MZ.con;rmz();}
+  else if(a==="mzsay")speak(enS(MZ),false);
+  else if(a==="mzrand"){mzRandom(MZ,true);rmz();}
+  else if(a==="mzsave"){const u=me();u.fav=u.fav||[];const en=enS(MZ);if(u.fav.some(x=>x.en===en)){toast("Bu cümle zaten defterinde.");return;}u.fav.unshift({en,tr:trB(MZ),t:Date.now()});u.fav=u.fav.slice(0,300);save();toast("Defterine eklendi ★");rmz();}
+  else if(a==="mzdel"){const u=me();u.fav.splice(+b.dataset.v,1);save();rmz();}
+  else if(a==="mzcheck"){MZ.checked=true;MZ.tot++;const ok=trB(MZ)===trB(MZ.tg);if(ok){MZ.ok++;if(DB.current){me().mzok=(me().mzok||0)+1;save();}}rmz();}
+  else if(a==="mzhint"){MZ.hint=true;rmz();}
+  else if(a==="mzans"){MZ.checked=true;MZ.ans=true;rmz();}
+  else if(a==="mznew"){mzNew();rmz();}
   else if(a==="cefr"){pickCefr=b.dataset.v;const c=CEFR.find(x=>x.id===pickCefr);const r=c.rec.find(id=>LEVELS.find(l=>l.id===id).units);if(r&&(!pickBook||!c.rec.includes(pickBook)))pickBook=r;$("#app").innerHTML=levelPage();}
   else if(a==="book"){pickBook=b.dataset.v;$("#app").innerHTML=levelPage();}
   else if(a==="lvsave"){const p=me();p.cefr=pickCefr;p.level=pickBook;bind();save();toast("Speakout "+curL().name+" seçildi.");lastUnit=null;location.hash="#dashboard";}

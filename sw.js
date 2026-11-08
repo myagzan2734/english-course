@@ -1,5 +1,5 @@
 // Güncelleme yaptığında bu sürüm adını değiştir (v1 → v2), telefonlar yeni dosyaları indirsin.
-const CACHE = "calisma-defteri-v3";
+const CACHE = "calisma-defteri-v4";
 const ASSETS = ["./", "./index.html", "./manifest.json", "./icon-192.png", "./icon-512.png", "./apple-touch-icon.png"];
 
 self.addEventListener("install", e => {
